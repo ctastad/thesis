@@ -1,0 +1,38 @@
+Introduction
+- the challenge: field of bio has ever increasing issues in data management and doesn't apply tech solutions very effectively
+    - ability to move past code to data manipulation and presentation
+    - deployment and the integration of common programming practices
+- the tech has evolved
+    - transitioning (implementing) existing solutions with new paradigms
+    - improved data management (manipulation, collation, visualization)
+    - web front-end tech (web dev)
+    - technologies that enable reformed development
+        - javascript
+        - markdown
+        - rstudio engine
+    - increased accessibility to non-tech users
+- applications of the tech in bio, specifically the CCGD
+    - gene screens in cancer bio
+
+Methods
+- project requirements
+    - upgrade existing server build to RHEL 7
+    - rewrite web interface in R knitr/markdown framework
+    - rewrite central table construction process in Rshiny framework
+    - implement ability to manipulate table by product owner (tim)
+    - employ improved software development best practices
+- datatables server-side javascript library
+- rmarkdown site structure
+- rshiny table app
+- standard RHEL setup
+- scripts in bash
+
+Results
+- code base reduced
+- interface improved
+- need for sql database eliminated
+- space constraints eliminated. server resource reqs reduced overall.
+- server admin and app controls streamlined
+    - site render newly automated
+
+

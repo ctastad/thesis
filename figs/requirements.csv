@@ -1,0 +1,7 @@
+Feature,Goal,Framework,Description
+1,server OS,upgrade server OS,RHEL7,Transition of architecture for public server host. This is required by University OIT due to end of life schedule for RHEL6.
+2,web front-end,rewrite web interface,Rmarkdown,"Improvements to the web interface written in a modern, simplified language. This will improved access to content creation and allow for automation in site rendering."
+3,table build,rewrite table build,Rshiny,Rshiny offers a dramatic improvement to replace the existing process by merging the table build back-end with a modern web display of the app interface.
+4,table update,improved admin controls,BASH/R,"Existing app version confined some content controls to app author, preventing contributions by app owner."
+5,version control,implement best practices,git/docs,No version control was used in the original development of the app. This and other documentation practices were expanded in the rewrite
+6,n/a,resource improvements,codebase,"Due to the lack of some best practices, there were many opportunities to make impactful resource improvements."
