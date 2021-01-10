@@ -16,8 +16,8 @@
 
 % Packages and some formatting
 \usepackage{titlesec,hyperref,booktabs,relsize,setspace,float,verbatim,caption,subcaption,graphicx}
-\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
-%\hypersetup{hidelinks}
+%\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+\hypersetup{hidelinks}
 \titleformat{\chapter}[hang]
 {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter:}{1em}{}
 \doublespacing{}
@@ -239,7 +239,7 @@ output:
 \end{verbatim}
 \subcaption{index.Rmd individual page header}\label{fig:pageHeader}
 \end{subfigure}
-\caption{YAML Configuration Code Segments}\label{fig:yamls}
+\caption{YAML Configuration Segments}\label{fig:yamls}
     \addtolength\tabcolsep{+0.2em}
     \relsize{+2}
 \end{figure}
@@ -281,6 +281,12 @@ Need for sql database eliminated.
 
 Interface improved. Table content contained within single page.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/g13732.png}
+    \caption{Project directory file tree comparison}\label{fig:fileTree}
+\end{figure}
+
 Following the goals set out in our project requirements, we chose Rmarkdown as a replacement framework to develop the application's web front-end. Previously, the web interface for the application had been developed using Adobe Dreamweaver~\cite{Abbott2015}. For the time Dreamweaver served the purpose of simplifying the process of interface construction and web development, yet we hoped to extend the theme of simplified content creation into a modern framework. Further, utilizing a language such as Rmarkdown almost fully carries the development process into a state of pure content creation.
 
 The original version of the CCGD front-end was developed using Dreamweaver~\cite{Abbott2015}. While this may have suitable at the time, several generations of web development have brought the field to be able to move beyond the process of design and focus more readily on content.
@@ -289,6 +295,14 @@ In an effort to reduce code complexity and improve access to content creation, a
 
 \subsection{Resource Utilization Improvements}
 space constraints eliminated. Server resource reqs reduced overall.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figs/g51565.png}
+    \caption{Treemap of Disk Use Between App Versions}\label{fig:spaceTree}
+\end{figure}
+
+Ref crossdirstat
 
 \subsection{Administration Streamlined}
 server admin and app controls streamlined. Site render newly automated.
