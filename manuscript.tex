@@ -187,7 +187,7 @@ Apache
 The upgraded build of the CCGD employed a completely different front-end architecture centralized around R web services environment. Built with dynamic modularity and data transportability in mind, the Rmarkdown framework offers the ability to render several independent markdown files into a unified website. We applied this feature set to produce our general site structure and content as it allowed for a massive simplification in web design. While following the existing site map, we recreated the raw content of the existing application as independent markdown files. Within the Rmarkdown format guide. The keystone feature of the Rmarkdown framework that allows for this unified rendering is the use of a YAML configuration header (see Figure~\ref{fig:siteYaml}). The \texttt{rmarkdown::render\_site} function leverages this configuration file to align and sequentially render content and styling in tandem for a complete site map [citeme rmarkdown docs]. Additionally, individual markdown pages employ this same configuration paradigm for page-specific parameters and formatting guidelines (see Figure~\ref{fig:pageHeader}).
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{figs/rmarkdownflow.png}
+    \includegraphics[width=\linewidth]{fig/rmarkdown_flow.png}
     \caption{[TEMP] Rmarkdown Rendering Flow}\label{fig:renderFlow}
 \end{figure}
 
@@ -253,7 +253,7 @@ The structure of a general shiny app follows a highly reduced and consistent par
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{figs/g238.png}
+    \includegraphics[width=\textwidth]{fig/g1043.png}
     \caption{table\_app/app.R Reactive Graph}\label{fig:reactiveGraph}
 \end{figure}
 
@@ -283,7 +283,7 @@ Interface improved. Table content contained within single page.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{figs/g13732.png}
+    \includegraphics[width=\textwidth]{fig/file_tree.png}
     \caption{Project directory file tree comparison}\label{fig:fileTree}
 \end{figure}
 
@@ -298,7 +298,7 @@ space constraints eliminated. Server resource reqs reduced overall.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{figs/g51565.png}
+    \includegraphics[width=\textwidth]{fig/space_tree.png}
     \caption{Treemap of Disk Use Between App Versions}\label{fig:spaceTree}
 \end{figure}
 
