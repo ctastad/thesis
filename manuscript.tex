@@ -261,6 +261,12 @@ Within the scope of the \href{https://github.com/ctastad/ccgd/blob/master/table_
 
 A small but fundamental element of our shiny app design was the use of the \texttt{renderDataTable} function in generating the \texttt{searchTable} output. The prior iteration of the CCGD architecture employed a relatively disproportionate MySQL database to store and serve numerous component elements that made up the table. Instead, the new implementation of our app now leverages the server-side processing capability of the DataTables JavaScript library. More specifically, we set parameters to create a reactive version of our function which allows for paging, searching, filtering, and sorting in real-time within the shiny server infrastructure [citeme DataTables]. Through this function alone we established new server paradigm that eliminated the MySQL database.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{fig/parse_flow.png}
+    \caption{Project directory file tree comparison}\label{fig:parseFlow}
+\end{figure}
+
 \subsection{Data Integration Process}
 
 \subsection{Best Practices}
