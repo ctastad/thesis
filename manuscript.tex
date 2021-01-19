@@ -270,10 +270,18 @@ In an effort to reduce code complexity and improve access to content creation, a
 \subsection{Resource Utilization Improvements}
 space constraints eliminated. Server resource reqs reduced overall.
 
+First, changes to the backend process allowed for the elimination or significant reduction of several large, persistent data files making them transient through asynchronous update. (The largest of these are highlighted with asterisk.) Second, the major architecture choice to handoff server-side table processing to a javascript engine instead of MySQL allowed for the elimination of the 10GB database. Last,
+
+sql elimination
+
+persistent data files reduced
+
+build table process constructed to make more files dynamic and transient
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{fig/space_tree.png}
-    \caption{Disk Use Comparison}\label{fig:spaceTree}
+\caption[Disk Use Comparison]{\textbf{Disk Use Comparison} shows a treemap which illustrates the substantial difference in disk utilization between CCGD versions. The original to-scale map on the left gives an exploded view distinguishing the updated app treemap in the bottom right corner with all remaining elements of the map belonging to the old version. This visual comparison emphasizes the [10x] space decrease made during the upgrade. The fruits of several design choices are present in this space reduction. The most notable impacts of these choices are several massive files eliminated or substantially reduced (noted by asterisk). Notably, the dump.sql file shown represented the disproportionate size of the database and space payoff earned by eliminating it. Also, it can be seen that the persistent cosmic.txt data file is present in both versions. Improvements made in post-process trimming of files like this also produced substantial space returns. Last, the rebuilt table build process transitioned several data objects shown from persistent to transient.}\label{fig:spaceTree}
 \end{figure}
 
 Ref crossdirstat
