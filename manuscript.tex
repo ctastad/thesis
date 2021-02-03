@@ -214,6 +214,14 @@ An important distinction in summarizing the implementation of web framework is t
 \caption[YAML Configuration Segments]{\textbf{YAML Configuration Segments} Pictured above are the two forms of complete yaml configuration headers utilized in Rmarkdown rendering. The central takeaway from this illustration is to recognize the heavy lifting performed by these relatively small code segments. Figure~\ref{fig:pageHeader} provides an example of the header found in every~.Rmd file that make-up the respective pages of the site. These headers provide primarily formatting configuration for the rendering process but include broader functions as well. The header can be as simple as listing a title and pandoc output type or include LaTex bibliography functionality and read-in style sheets like the one shown. Either way, a few lines of configuration generate wildly different outputs. Figure~\ref{fig:siteYaml} presents the yaml file which serves to assemble independent Rmarkdown files into a joined website as described in figure~\ref{fig:renderFlow}. There is less configuration here as the only real purpose is to define the site tree for the \texttt{rmarkdown::render\_site} process.}\label{fig:yamls}
 \end{figure}
 
+\subsection{Data Integration Process}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{fig/subroutine_flow.png}
+    \caption[Subroutine flow]{\textbf{Subroutine flow} This is the description.}\label{fig:subroutine}
+\end{figure}
+
 \subsection{Rshiny App}
 In order to replace the existing CCGD search functionality our group employed the Rshiny framework. Simply put, the shiny app that now enables this central purpose is an interactive web interface for a single table. Several changes were made to the existing integration pipeline in order to achieve this simplicity.
 
@@ -234,8 +242,6 @@ A small but fundamental element of our shiny app design was the use of the \text
     \includegraphics[width=\textwidth]{fig/parse_flow.png}
     \caption[Server-side Processing Flow]{\textbf{Server-side Processing Flow} This diagram illustrates a small but fundamental change applied to the application table processing through the lens of the server-client relationship. The ``old'' flow shows the prior table processing procedure, which is highly typical of a classic Linux-Apache-MySql-PHP (LAMP) stack website. Inputs and calls made by the browser occur from and within a client-side rendering engine which delivers a static request to the server-side SQL database. The database returns parsed XML to the browser that is rendered and displayed. Our fundamental shift was to move this data processing entirely to JavaScript. Typically, this would result in client-side processing that would prohibit large tables like ours. Instead, we leveraged a server-side engine to handle asynchronous AJAX requests which are returned with parsed JSON, shown in the ``new'' path. This processing flow allows for the use of a single~.csv file as the data source in table presentation, ordering, and pagination, ultimately eliminating the need for a SQL architecture.}\label{fig:parseFlow}
 \end{figure}
-
-\subsection{Data Integration Process}
 
 \subsection{Best Practices}
 Some features of the software best practices from the previous version of the CCGD were done quite well such as the level of detail in the documentation. At the same time, many other important areas were missing in the development and maintenance of the application. Most prominent among these were the lack of any degree of version control and relatively inconsistent design principles. As a result, our group employed or improved upon several methods in an effort to elevate the quality, usability, and transportability of our codebase and application~\cite{Fincham2011}.
