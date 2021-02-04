@@ -219,7 +219,7 @@ An important distinction in summarizing the implementation of web framework is t
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{fig/subroutine_flow.png}
-    \caption[Subroutine flow]{\textbf{Subroutine flow} This is the description.}\label{fig:subroutine}
+    \caption[Subroutine flow]{\textbf{Subroutine flow} This diagram offers an overview of the actions and relationships within the executable scripts of the CCGD. Prior functionality was more effectively delineated into subroutines for better modularity. Also shown is the added functionality brought by the rebuilt data integration process. A hallmark of the difference between this new and old process is the use of R and shiny as the central frameworks to build the table as implemented in the build\_table.R and app.R scripts. It can also be seen that the integration process is automated with a cron job among other maintenance tasks. Last, the ccgd\_upload.sh and knit\_site.R scripts were created to allow for introduction of new table data or the manual execution of any of the app subroutines.}\label{fig:subroutine}
 \end{figure}
 
 \subsection{Rshiny App}

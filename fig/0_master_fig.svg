@@ -612,9 +612,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.1767767"
-     inkscape:cx="-738.69729"
-     inkscape:cy="1098.5831"
+     inkscape:zoom="0.7071068"
+     inkscape:cx="475.95118"
+     inkscape:cy="1040.459"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -26094,7 +26094,7 @@
        id="path21904-4-6-3-3-0"
        inkscape:connector-curvature="0" />
     <g
-       id="g8349"
+       id="g7154"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
       <rect
@@ -26848,11 +26848,6 @@
          d="m 80.425017,28.50088 h 7.094118"
          id="path14667"
          inkscape:connector-curvature="0" />
-      <path
-         style="fill:none;stroke:#333333;stroke-width:0.359;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 87.519135,28.50086 V 134.99567 H 110.53789"
-         id="path14671"
-         inkscape:connector-curvature="0" />
       <g
          id="g17715"
          transform="translate(-52.018259,-96.570399)">
@@ -27018,6 +27013,11 @@
          id="path7812"
          d="M 200.17674,42.951444 H 184.2138 v 55.768379 h -13.78617"
          style="fill:none;stroke:#333333;stroke-width:0.359;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker7822)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path6990"
+         d="m 87.519134,28.500854 v 34.73778 h 23.605856"
+         style="fill:none;stroke:#333333;stroke-width:0.359;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" />
     </g>
   </g>
 </svg>
