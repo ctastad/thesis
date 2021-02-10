@@ -15,6 +15,7 @@
 \addbibresource{ref/thesis.bib}
 
 % Packages
+\usepackage{svg}
 \usepackage{titlesec,hyperref,booktabs,relsize,setspace,float,verbatim,caption,subcaption,graphicx}
 %\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
 \hypersetup{hidelinks}
@@ -122,11 +123,11 @@ THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 
 
 \chapter{Introduction}
-In many ways, the field of Bioinformatics exists as the result of a problem rather than a discovery, as with other scientific fields. The nature of the challenges have evolved from a growth in the composition of primary data and a lacking compensatory set of technical skills to evaluate it. With the bottle neck that exists at the center of this problem, previously simple notions of collating, analyzing, and visualizing results no longer scale. As a result, a measurable area of focus is not just in the novel discovery of Biological relevance but in advancement of those engineer tools that offer new or dynamic means to solve old problems with new solutions. Further, the crossover of Biological and technical expertise has offerred, at times, a clutterred approach to implementing these solutions resulting in less than desirable engineering.
+In many ways, the field of Bioinformatics exists as the result of a problem rather than a discovery, as with other scientific fields. The nature of the challenges have evolved from a growth in the composition of primary data and a lacking compensatory set of technical skills to evaluate it. With the bottle neck that exists at the center of this problem, previously simple notions of collating, analyzing, and visualizing results no longer scale. As a result, a measurable area of focus is not just in the novel discovery of Biological relevance but in advancement of those engineer tools that offer new or dynamic means to solve old problems with new solutions. Further, the crossover of Biological and technical expertise has offered, at times, a cluttered approach to implementing these solutions resulting in less than desirable engineering.
 
-All while this dynamic has developed in the world of Biology, the technology has rapidly improved. A pillar of the field's advances is in the area of web technologies, which now offer frameworks and tools that both accomplish more while requiring less of their developers. The classical paradigm of the web has evolved from the LAMP stack (Linux, Apache, MySQL, PHP) to improved frameworks such as advanced Javascript, CSS3, and HTML5 that lay the foundation for modern and flexible web applications. These improvements have served to enhance the functionality of applications along with creating a reformed development process that is more intuitive, more accessible, and, ultimately, more powerful. These advances offer specific utility to the sciences, and following a comparable progress in application bears consideration.
+All while this dynamic has developed in the world of Biology, the technology has rapidly improved. A pillar of the field's advances is in the area of web technologies, which now offer frameworks and tools that both accomplish more while requiring less of their developers. The classical paradigm of the web has evolved from the LAMP stack (Linux, Apache, MySQL, PHP) to improved frameworks such as advanced JavaScript, CSS3, and HTML5 that lay the foundation for modern and flexible web applications. These improvements have served to enhance the functionality of applications along with creating a reformed development process that is more intuitive, more accessible, and, ultimately, more powerful. These advances offer specific utility to the sciences, and following a comparable progress in application bears consideration.
 
-While the implementation of new paradigms typically applies to future work, it is essential to look back at opportunities to improve past engineering with updated models through the process of code refactoring. At a basic level, refactoring is simply restructing or rewriting the content of a codebase while retaining the functionality of that service. This can serve many purposes that all aim to accomplish some range of improvements to the backend design, architecture, or performance. Within many engineering goals, this process offers access to items that address routine maintainability to wholesale upgrade. At times, this may not just be preferrable but essential in the scope of scheduled updates and general obsolescence, making it a critical process in the scope of software development.
+While the implementation of new paradigms typically applies to future work, it is essential to look back at opportunities to improve past engineering with updated models through the process of code refactoring. At a basic level, refactoring is simply restructuring or rewriting the content of a codebase while retaining the functionality of that service. This can serve many purposes that all aim to accomplish some range of improvements to the backend design, architecture, or performance. Within many engineering goals, this process offers access to items that address routine maintainability to wholesale upgrade. At times, this may not just be preferable but essential in the scope of scheduled updates and general obsolescence, making it a critical process in the scope of software development.
 
 In this work, we present a small but emblematic case that illustrates these shifting paradigms. With these incremental changeovers, no mater the impact, the field takes on a new character in the management of its growing data challenges. The CCGD as a concept set out to tackle some of the original problems of filtering handling large quantities of data. We expand on this by re-implementing the same achievement through a modern paradigm.
 
@@ -183,8 +184,8 @@ Apache
 The upgraded build of the CCGD employed a completely different front-end architecture centralized around R web services environment. Built with dynamic modularity and data transportability in mind, the Rmarkdown framework offers the ability to render several independent markdown files into a unified website. We applied this feature set to produce our general site structure and content as it allowed for a massive simplification in web design. While following the existing site map, we recreated the raw content of the existing application as independent markdown files. Within the Rmarkdown format guide. The keystone feature of the Rmarkdown framework that allows for this unified rendering is the use of a YAML configuration header (see Figure~\ref{fig:siteYaml}). The \texttt{rmarkdown::render\_site} function leverages this configuration file to align and sequentially render content and styling in tandem for a complete site map [citeme rmarkdown docs]. Additionally, individual markdown pages employ this same configuration paradigm for page-specific parameters and formatting guidelines (see Figure~\ref{fig:pageHeader}).
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{fig/rmarkdown_flow.png}
-    \caption[Rmarkdown Rendering Flow]{\textbf{Rmarkdown Rendering Flow} The core web framework was created using a stitch process composed of two document conversion steps, which are both contained in the single \texttt{rmarkdow::render\_site} command. These two transformations are done by the R-specific knitr package and then the open-source pandoc tool. The first phase holds less relevance in particular as its role is to execute R code chunks, of which there are few in our page content. The markdown output from this step is seamlessly injected into a pandoc conversion which offers a large variety in document output. Specific to our case, the pandoc conversion paired with a companion yaml configuration file allows for multidocument markdown-to-html rendering which is assembled as a complete site stack. As a single process, this function generates an integrated, modern web front-end from content written in a light-weight syntax with almost none of the typical complexity of full-scale web page creation.}\label{fig:renderFlow}
+    \includegraphics[width=\linewidth]{fig/rmarkdown_flow.pdf}
+    \caption[Rmarkdown Rendering Flow]{\textbf{Rmarkdown Rendering Flow} The core web framework was created using a stitch process composed of two document conversion steps, which are both contained in the single \texttt{rmarkdown::render\_site} command. These two transformations are done by the R-specific knitr package and then the open-source Pandoc tool. The first phase holds less relevance in particular as its role is to execute R code chunks, of which there are few in our page content. The markdown output from this step is seamlessly injected into a Pandoc conversion which offers a large variety in document output. Specific to our case, the Pandoc conversion paired with a companion YAML configuration file allows for multidocument markdown-to-html rendering which is assembled as a complete site stack. As a single process, this function generates an integrated, modern web front-end from content written in a light-weight syntax with almost none of the typical complexity of full-scale web page creation.}\label{fig:renderFlow}
 \end{figure}
 
 responsive web design
@@ -195,27 +196,27 @@ An important distinction in summarizing the implementation of web framework is t
 \centering
 \begin{subfigure}[t]{.4\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{fig/page_header.png}
+    \includegraphics[width=\textwidth]{fig/page_header.pdf}
 \subcaption{index.Rmd individual page header}\label{fig:pageHeader}
 \end{subfigure}%
 \hspace{5em}
 \begin{subfigure}[t]{.4\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{fig/site_header.png}
+    \includegraphics[width=\textwidth]{fig/site_header.pdf}
 \caption{\_site.yml: file for site assembly}\label{fig:siteYaml}
 \end{subfigure}
-\caption[YAML Configuration Segments]{\textbf{YAML Configuration Segments} Pictured above are the two forms of complete yaml configuration headers utilized in Rmarkdown rendering. The central takeaway from this illustration is to recognize the heavy lifting performed by these relatively small code segments. Figure~\ref{fig:pageHeader} provides an example of the header found in every~.Rmd file that make-up the respective pages of the site. These headers provide primarily formatting configuration for the rendering process but include broader functions as well. The header can be as simple as listing a title and pandoc output type or include LaTex bibliography functionality and read-in style sheets like the one shown. Either way, a few lines of configuration generate wildly different outputs. Figure~\ref{fig:siteYaml} presents the yaml file which serves to assemble independent Rmarkdown files into a joined website as described in figure~\ref{fig:renderFlow}. There is less configuration here as the only real purpose is to define the site tree for the \texttt{rmarkdown::render\_site} process.}\label{fig:yamls}
+\caption[YAML Configuration Segments]{\textbf{YAML Configuration Segments} Pictured above are the two forms of complete YAML configuration headers utilized in Rmarkdown rendering. The central takeaway from this illustration is to recognize the heavy lifting performed by these relatively small code segments. Figure~\ref{fig:pageHeader} provides an example of the header found in every~.Rmd file that make-up the respective pages of the site. These headers provide primarily formatting configuration for the rendering process but include broader functions as well. The header can be as simple as listing a title and Pandoc output type or include LaTex bibliography functionality and read-in style sheets like the one shown. Either way, a few lines of configuration generate wildly different outputs. Figure~\ref{fig:siteYaml} presents the YAML file which serves to assemble independent Rmarkdown files into a joined website as described in figure~\ref{fig:renderFlow}. There is less configuration here as the only real purpose is to define the site tree for the \texttt{rmarkdown::render\_site} process.}\label{fig:yamls}
 \end{figure}
 
 \subsection{Data Integration Process}
 
 Improvements to the data integration process were accomplished using a more simplified framework to eliminate redundancy and provide a more standardized schema. The prior implementation employed some tools that are common place, but they were implemented in a fashion that lacked simplicity at times. Also, certain proprietary widgets presented functionality and compatibility choke points that generated road blocks to maintenance. The most substantial of the changes that addressed these issues was the transition to use of R as the data manipulation toolset. More specifically, the~\texttt{build\_table.R} script established a lean ETL process that took existing table data and external reference data to perform a transformation which collated old and new data. The product of this process could then be delivered to the R-based shiny app deployment generated by the~\texttt{app.R} script.
 
-Redundancy reduction was acheived within scipt functionality and storage utilization. Dedicated script actions that performed house keeping functions, as seen in the~\texttt{build\_table.sh} and~\texttt{backup.sh} (see Figure~\ref{fig:subroutine}), made specific effort to clear all transient data content that otherwise did not require persistent storage. This accounted for a large portion of persistent data that was previously left on the server. Additionally, script reduction was improved through a reorganzition of the general subroutines within the application. A reassignment of script actions were assigned in a more cohesive manner which allowed for both improved simplicity and modularity. This is most effectively seen in the manual control~\texttt{ccge\_upload.sh} script as the developer has the flexibility to opt out of executing several functions within the app (see Figure~\ref{fig:subroutine}).
+Redundancy reduction was achieved within script functionality and storage utilization. Dedicated script actions that performed house keeping functions, as seen in the~\texttt{build\_table.sh} and~\texttt{backup.sh} (see Figure~\ref{fig:subroutine}), made specific effort to clear all transient data content that otherwise did not require persistent storage. This accounted for a large portion of persistent data that was previously left on the server. Additionally, script reduction was improved through a reorganization of the general subroutines within the application. A reassignment of script actions were assigned in a more cohesive manner which allowed for both improved simplicity and modularity. This is most effectively seen in the manual control~\texttt{ccgd\_upload.sh} script as the developer has the flexibility to opt out of executing several functions within the app (see Figure~\ref{fig:subroutine}).
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{fig/subroutine_flow.png}
+    \includegraphics[width=\textwidth]{fig/subroutine_flow.pdf}
     \caption[Subroutine flow]{\textbf{Subroutine flow} This diagram offers an overview of the actions and relationships within the executable scripts of the CCGD\@. Prior functionality was more effectively delineated into subroutines for better modularity. Also shown is the added functionality brought by the rebuilt data integration process. A hallmark of the difference between this new and old process is the use of R and shiny as the central frameworks to build the table as implemented in the build\_table.R and app.R scripts. It can also be seen that the integration process is automated with a cron job among other maintenance tasks. Last, the ccgd\_upload.sh and knit\_site.R scripts were created to allow for introduction of new table data or the manual execution of any of the app subroutines.}\label{fig:subroutine}
 \end{figure}
 
@@ -226,7 +227,7 @@ The structure of a general shiny app follows a highly reduced and consistent par
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{fig/reactive_graph.png}
+    \includegraphics[width=\textwidth]{fig/reactive_graph.pdf}
     \caption[\texttt{table\_app/app.R} Reactive Graph]{\textbf{\texttt{table\_app/app.R} Reactive Graph} An Rshiny app design can be defined by its reactive graph. The graph above displays the process flow of our app by highlighting modularity in the data streams around the table filtering process. The reactive web design is intended to allow for the automatic implementation of changed states applied through the alternate paths of the graph. This allows for the passive display of a static representation of the table while allowing for dynamic adjustment to filtering inputs through the \texttt{[Var] $\rightarrow$ [Var].values} path. Additionally, this declarative model provides for an interactive table array while only drawing computation when the appropriate event is called.}\label{fig:reactiveGraph}
 \end{figure}
 
@@ -236,8 +237,8 @@ A small but fundamental element of our shiny app design was the use of the \text
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{fig/parse_flow.png}
-    \caption[Server-side Processing Flow]{\textbf{Server-side Processing Flow} This diagram illustrates a small but fundamental change applied to the application table processing through the lens of the server-client relationship. The ``old'' flow shows the prior table processing procedure, which is highly typical of a classic Linux-Apache-MySql-PHP (LAMP) stack website. Inputs and calls made by the browser occur from and within a client-side rendering engine which delivers a static request to the server-side SQL database. The database returns parsed XML to the browser that is rendered and displayed. Our fundamental shift was to move this data processing entirely to JavaScript. Typically, this would result in client-side processing that would prohibit large tables like ours. Instead, we leveraged a server-side engine to handle asynchronous AJAX requests which are returned with parsed JSON, shown in the ``new'' path. This processing flow allows for the use of a single~.csv file as the data source in table presentation, ordering, and pagination, ultimately eliminating the need for a SQL architecture.}\label{fig:parseFlow}
+    \includegraphics[width=\textwidth]{fig/parse_flow.pdf}
+    \caption[Server-side Processing Flow]{\textbf{Server-side Processing Flow} This diagram illustrates a small but fundamental change applied to the application table processing through the lens of the server-client relationship. The ``old'' flow shows the prior table processing procedure, which is highly typical of a classic Linux-Apache-MySQL-PHP (LAMP) stack website. Inputs and calls made by the browser occur from and within a client-side rendering engine which delivers a static request to the server-side SQL database. The database returns parsed XML to the browser that is rendered and displayed. Our fundamental shift was to move this data processing entirely to JavaScript. Typically, this would result in client-side processing that would prohibit large tables like ours. Instead, we leveraged a server-side engine to handle asynchronous AJAX requests which are returned with parsed JSON, shown in the ``new'' path. This processing flow allows for the use of a single~.csv file as the data source in table presentation, ordering, and pagination, ultimately eliminating the need for a SQL architecture.}\label{fig:parseFlow}
 \end{figure}
 
 \subsection{Best Practices}
@@ -245,18 +246,11 @@ Some features of the software best practices from the previous version of the CC
 
 Throughout the course of the project we utilized a private github code repository for hosting and change tracking. This work has since been published on a public repository and assigned a DOI number through \href{https://zenodo.org/record/4422027}{Zenodo}. Furthering the spirit of project integrity, we expanded on the nature of the documentation for the user and, more prominently, the application owner. Specifically, documentation that was previously written in a Microsoft Word file was now recreated in markdown, and a notable tone and detail shift was made in serving the information transportability between administrators.
 
-In approaching the process of development, we applied a philosophy of tidy code creation to both syntax and design. A supporting method in creating a more elegant code syntax was the use of R universe tools, tidyverse and Rmarkdown. Both offer a coding grammar that is centered around accessibility and simplification of high-level language organization~\cite{Wickham2019}. Furthering this simplification, we sought opportunities to deduplicate and extract subroutines in the table integration process in an effort to streamline resource constraints. Finally, another notable area for improvement we sought was in disk space utilization. The existing integration process relied on the continuous presence of what were several intermediary files that occupied a sizable disk capacity. To combat this we specifically reworked several data transformation steps to allow for the post-process elimination of these temporary data objects.
+In approaching the process of development, we applied a philosophy of tidy code creation to both syntax and design. A supporting method in creating a more elegant code syntax was the use of R universe tools, Tidyverse and Rmarkdown. Both offer a coding grammar that is centered around accessibility and simplification of high-level language organization~\cite{Wickham2019}. Furthering this simplification, we sought opportunities to deduplicate and extract subroutines in the table integration process in an effort to streamline resource constraints. Finally, another notable area for improvement we sought was in disk space utilization. The existing integration process relied on the continuous presence of what were several intermediary files that occupied a sizable disk capacity. To combat this we specifically reworked several data transformation steps to allow for the post-process elimination of these temporary data objects.
 
 \section{Results}
 
-\subsection{Architecture Upgrades}
-
-
-
-
-Accomplished project goals
-
-
+\subsection{Design Improvements}
 
 Design
 
@@ -271,7 +265,6 @@ Better url
 The rebuilt data integration process 
 
 
-
 Architecture
 
 implemented modern web platform (front-end and table app) from lamp stack
@@ -279,8 +272,6 @@ implemented modern web platform (front-end and table app) from lamp stack
 upgraded server from rhel6
 
 Need for sql database eliminated.
-
-
 
 
 Performance/resources
@@ -294,15 +285,10 @@ Data files made dynamic and transient
 Codebase reduction.
 
 
-
-
-
-
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{fig/file_tree.png}
-    \caption[Project Directory File Tree Comparison]{\textbf{Project Directory File Tree Comparison} The above figure offers a qualitative assessment of an element of technical debt that was improved in refactoring. Shown are the file trees of the site directories of the new and old projects. What is illustrated is a dramatic improvement in the tree size and complexity through the elimination of a large degree of content, log, and style files. This is accentuated even forther when comparing the source code. This was accomplished both in the intentional design of eliminating content redundancy and in the streamlined structure of the Rmarkdown rendering process. This allowed for the elimination of several dimensions of broader web design and table build data elements.}\label{fig:fileTree}
+    \includegraphics[width=\textwidth]{fig/file_tree.pdf}
+    \caption[Project Directory File Tree Comparison]{\textbf{Project Directory File Tree Comparison} The above figure offers a qualitative assessment of an element of technical debt that was improved in refactoring. Shown are the file trees of the site directories of the new and old projects. What is illustrated is a dramatic improvement in the tree size and complexity through the elimination of a large degree of content, log, and style files. This is accentuated even further when comparing the source code. This was accomplished both in the intentional design of eliminating content redundancy and in the streamlined structure of the Rmarkdown rendering process. This allowed for the elimination of several dimensions of broader web design and table build data elements.}\label{fig:fileTree}
 \end{figure}
 
 Following the goals set out in our project requirements, we chose Rmarkdown as a replacement framework to develop the application's web front-end. Previously, the web interface for the application had been developed using Adobe Dreamweaver~\cite{Abbott2015}. For the time Dreamweaver served the purpose of simplifying the process of interface construction and web development, yet we hoped to extend the theme of simplified content creation into a modern framework. Further, utilizing a language such as Rmarkdown almost fully carries the development process into a state of pure content creation.
@@ -311,32 +297,19 @@ The original version of the CCGD front-end was developed using Dreamweaver~\cite
 
 In an effort to reduce code complexity and improve access to content creation, an engineering choice was made to redesign the web front-end in Rmarkdown. While an approach such as this can reduce certain feature availability and overall design flexibility, a conscious priority was placed on the content of the page over the web functionality. In the spirit of our project goals,\ldots A framework such as Rmarkdown provides a development paradigm that dramatically shifts the effort of creation into that content rather than the creation broader page architecture [citeme rmarkdown docs]. The work of assembling that architecture is largely done for the user in leveraging
 
-\subsection{Resource and Design Improvements}
-
-Design, architecture, performance
-
-Space constraints eliminated. Server resource reqs reduced overall.
-
-Interface now streamlined to single page instead of a bunch of pages.
-
-First, changes to the backend process allowed for the elimination or significant reduction of several large, persistent data files making them transient through asynchronous update. (The largest of these are highlighted with asterisk.) Second, the major architecture choice to handoff server-side table processing to a javascript engine instead of MySQL allowed for the elimination of the 10GB database. Last,
-
-sql elimination
-
-persistent data files reduced
-
-build table process constructed to make more files dynamic and transient
+\subsection{Architecture Upgrades}
+First, changes to the backend process allowed for the elimination or significant reduction of several large, persistent data files making them transient through asynchronous update. (The largest of these are highlighted with asterisk.) Second, the major architecture choice to hand off server-side table processing to a JavaScript engine instead of MySQL allowed for the elimination of the 10GB database. Last,
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{fig/space_tree.png}
+    \includegraphics[width=\textwidth]{fig/space_tree.pdf}
 \caption[Disk Use Comparison]{\textbf{Disk Use Comparison} shows a treemap which illustrates the substantial difference in disk utilization between CCGD versions. The original to-scale map on the left gives an exploded view distinguishing the updated app treemap in the bottom right corner with all remaining elements of the map belonging to the old version. This visual comparison emphasizes the [10x] space decrease made during the upgrade. The fruits of several design choices are present in this space reduction. The most notable impacts of these choices are several massive files eliminated or substantially reduced (noted by asterisk). Notably, the dump.sql file shown represented the disproportionate size of the database and space payoff earned by eliminating it. Also, it can be seen that the persistent cosmic.txt data file is present in both versions. Improvements made in post-process trimming of files like this also produced substantial space returns. Last, the rebuilt table build process transitioned several data objects shown from persistent to transient.}\label{fig:spaceTree}
 \end{figure}
 
 Ref crossdirstat
 
-\subsection{Administration Streamlined}
-server admin and app controls streamlined. Site render newly automated.
+\subsection{Resources Improvements}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
