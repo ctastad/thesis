@@ -1,4 +1,6 @@
 *.aux
+*.odt
+*.docx
 *.bcf
 *.fdb_latexmk
 *.swp
