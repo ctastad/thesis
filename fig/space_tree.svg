@@ -404,9 +404,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.3535534"
-     inkscape:cx="487.99071"
-     inkscape:cy="1516.5535"
+     inkscape:zoom="1"
+     inkscape:cx="494.19548"
+     inkscape:cy="350.7464"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -430,7 +430,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -440,9 +440,7 @@
      id="layer1"
      transform="translate(-6.7575e-5,732.35208)">
     <g
-       id="g26722"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96">
+       id="g14072">
       <g
          transform="matrix(0.16329737,0,0,0.16329737,0.08171626,-722.38339)"
          style="fill:#ff8181;fill-opacity:1;stroke:#333333;stroke-width:0.99969715;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -16411,34 +16409,6 @@
            sodipodi:role="line">web</tspan></text>
       <g
          transform="matrix(0.73658277,0,0,0.73658277,-472.08985,-1311.2685)"
-         style="fill:#ff8181;fill-opacity:1;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="g5094-6">
-        <title
-           id="title5090-7">/home/chris/Seafile/library/work/research/starr_lab/ccgd_dir_compare/new/table_app/cosmic_trim.txt</title>
-        <rect
-           style="fill:#ff8181;fill-opacity:1;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect5092-5"
-           height="54.169132"
-           width="56.754452"
-           y="945.83087"
-           x="884.13739" />
-      </g>
-      <g
-         transform="matrix(0.73658277,0,0,0.73658277,-472.08985,-1311.2685)"
-         style="fill:#b6d7a9;fill-opacity:0.97647059;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="g5100-3">
-        <title
-           id="title5096-5">/home/chris/Seafile/library/work/research/starr_lab/ccgd_dir_compare/new/table_app/ccgd_export.csv</title>
-        <rect
-           style="fill:#b6d7a9;fill-opacity:0.97647059;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect5098-6"
-           height="54.038425"
-           width="3.4051366"
-           y="945.83087"
-           x="940.89185" />
-      </g>
-      <g
-         transform="matrix(0.73658277,0,0,0.73658277,-472.08985,-1311.2685)"
          style="stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="g5106-2">
         <title
@@ -16506,20 +16476,6 @@
            width="0.084377214"
            y="999.96753"
            x="944.21259" />
-      </g>
-      <g
-         transform="matrix(0.73658277,0,0,0.73658277,-472.08985,-1311.2685)"
-         style="fill:#81b3ff;fill-opacity:1;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="g5136-7">
-        <title
-           id="title5132-9">/home/chris/Seafile/library/work/research/starr_lab/ccgd_dir_compare/new/.git/objects/pack/pack-2d63ccd58b3310e4d2ce0dfacb9a89649de574d1.pack</title>
-        <rect
-           style="fill:#81b3ff;fill-opacity:1;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect5134-2"
-           height="31.693827"
-           width="43.79945"
-           y="945.83087"
-           x="944.297" />
       </g>
       <g
          transform="matrix(0.73658277,0,0,0.73658277,-472.08985,-1311.2685)"
@@ -18818,18 +18774,63 @@
            x="988.0957" />
       </g>
       <g
-         transform="matrix(0.73658277,0,0,0.73658277,-472.08985,-1311.2685)"
-         style="fill:#b6d7a9;fill-opacity:0.97647059;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="g6126-7">
-        <title
-           id="title6122-4">/home/chris/Seafile/library/work/research/starr_lab/ccgd_dir_compare/new/_site/table_app/ccgd_export.csv</title>
-        <rect
+         id="g9771">
+        <g
+           id="g5094-6"
+           style="fill:#ff8181;fill-opacity:1;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           transform="matrix(0.73658277,0,0,0.73658277,-472.08985,-1311.2685)">
+          <title
+             id="title5090-7">/home/chris/Seafile/library/work/research/starr_lab/ccgd_dir_compare/new/table_app/cosmic_trim.txt</title>
+          <rect
+             x="884.13739"
+             y="945.83087"
+             width="56.754452"
+             height="54.169132"
+             id="rect5092-5"
+             style="fill:#ff8181;fill-opacity:1;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        </g>
+        <g
+           id="g5100-3"
            style="fill:#b6d7a9;fill-opacity:0.97647059;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect6124-8"
-           height="13.624845"
-           width="11.854903"
-           y="945.83087"
-           x="988.14508" />
+           transform="matrix(0.73658277,0,0,0.73658277,-472.08985,-1311.2685)">
+          <title
+             id="title5096-5">/home/chris/Seafile/library/work/research/starr_lab/ccgd_dir_compare/new/table_app/ccgd_export.csv</title>
+          <rect
+             x="940.89185"
+             y="945.83087"
+             width="3.4051366"
+             height="54.038425"
+             id="rect5098-6"
+             style="fill:#b6d7a9;fill-opacity:0.97647059;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        </g>
+        <g
+           id="g5136-7"
+           style="fill:#81b3ff;fill-opacity:1;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           transform="matrix(0.73658277,0,0,0.73658277,-472.08985,-1311.2685)">
+          <title
+             id="title5132-9">/home/chris/Seafile/library/work/research/starr_lab/ccgd_dir_compare/new/.git/objects/pack/pack-2d63ccd58b3310e4d2ce0dfacb9a89649de574d1.pack</title>
+          <rect
+             x="944.297"
+             y="945.83087"
+             width="43.79945"
+             height="31.693827"
+             id="rect5134-2"
+             style="fill:#81b3ff;fill-opacity:1;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        </g>
+        <g
+           id="g6126-7"
+           style="fill:#b6d7a9;fill-opacity:0.97647059;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           transform="matrix(0.73658277,0,0,0.73658277,-472.08985,-1311.2685)">
+          <title
+             id="title6122-4">/home/chris/Seafile/library/work/research/starr_lab/ccgd_dir_compare/new/_site/table_app/ccgd_export.csv</title>
+          <rect
+             x="988.14508"
+             y="945.83087"
+             width="11.854903"
+             height="13.624845"
+             id="rect6124-8"
+             style="fill:#b6d7a9;fill-opacity:0.97647059;stroke:#333333;stroke-width:0.24521877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        </g>
       </g>
       <g
          transform="matrix(0.73658277,0,0,0.73658277,-472.08985,-1311.2685)"
@@ -20491,14 +20492,14 @@
       <text
          id="text29021"
          y="-618.77631"
-         x="180.76135"
+         x="178.79936"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.63327599px;line-height:9.03119659px;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#333333;fill-opacity:1;stroke:none;stroke-width:0.36124784"
          xml:space="preserve"><tspan
            style="font-weight:bold;font-size:7.05555534px;fill:#333333;stroke-width:0.36124784"
            y="-618.77631"
-           x="180.76135"
+           x="178.79936"
            id="tspan29019"
-           sodipodi:role="line">Updated App - scaled 5x</tspan></text>
+           sodipodi:role="line">Updated App - scaled 15x</tspan></text>
       <path
          inkscape:connector-curvature="0"
          id="path29073"
