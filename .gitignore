@@ -3,7 +3,6 @@
 *.fdb_latexmk
 *.swp
 *.fls
-*.pdf
 *.run.xml
 *.glo
 *.idx
