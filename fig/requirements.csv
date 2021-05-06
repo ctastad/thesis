@@ -4,4 +4,4 @@ Feature,Goal,Framework,Description
 3,table build,rewrite table build,Rshiny,Rshiny offers a dramatic improvement to replace the existing process by merging the table build back-end with a modern web display of the app interface.
 4,table update,improved admin controls,BASH/R,"Existing app version confined some content controls to app author, preventing contributions by app owner."
 5,version control,implement best practices,git/docs,No version control was used in the original development of the app. This and other documentation practices were expanded in the rewrite
-6,n/a,resource improvements,codebase,"Due to the lack of some best practices, there were many opportunities to make impactful resource improvements."
+6,best practices,resource improvements,whole codebase,"Due to the lack of some best practices, there were many opportunities to make impactful resource improvements."

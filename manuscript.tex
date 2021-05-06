@@ -190,16 +190,22 @@ An important distinction in summarizing the implementation of web framework is t
 
 \begin{figure}
 \centering
-\begin{subfigure}[t]{.4\textwidth}
+\begin{subfigure}[t]{.3\textwidth}
     \centering
     \includegraphics[width=\textwidth]{fig/page_header.pdf}
 \subcaption{index.Rmd individual page header}\label{fig:pageHeader}
 \end{subfigure}%
-\hspace{5em}
-\begin{subfigure}[t]{.4\textwidth}
+\hspace{2em}
+\begin{subfigure}[t]{.3\textwidth}
     \centering
     \includegraphics[width=\textwidth]{fig/site_header.pdf}
 \caption{\_site.yml: file for site assembly}\label{fig:siteYaml}
+\end{subfigure}
+\hspace{2em}
+\begin{subfigure}[t]{.2\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{fig/yaml_illustration.pdf}
+\caption{Illustration of yaml implementation}\label{fig:yamlIllust}
 \end{subfigure}
 \caption[YAML Configuration Segments]{\textbf{YAML Configuration Segments} Pictured above are the two forms of complete YAML configuration headers utilized in Rmarkdown rendering. The central takeaway from this illustration is to recognize the heavy lifting performed by these relatively small code segments. Figure~\ref{fig:pageHeader} provides an example of the header found in every~.Rmd file that make-up the respective pages of the site. These headers provide primarily formatting configuration for the rendering process but include broader functions as well. The header can be as simple as listing a title and Pandoc output type or include LaTex bibliography functionality and read-in style sheets like the one shown. Either way, a few lines of configuration generate wildly different outputs. Figure~\ref{fig:siteYaml} presents the YAML file which serves to assemble independent Rmarkdown files into a joined website as described in figure~\ref{fig:renderFlow}. There is less configuration here as the only real purpose is to define the site tree for the \texttt{rmarkdown::render\_site} process.}\label{fig:yamls}
 \end{figure}
@@ -283,6 +289,8 @@ Ref crossdirstat
 \chapter{Conclusions}
 
 Best practices. Discuss open source.
+
+Mention cosmic connection.
 
 \addcontentsline{toc}{chapter}{Bibliography}
 \printbibliography{}
