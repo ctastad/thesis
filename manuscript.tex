@@ -89,21 +89,22 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\@. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE\@.
 
-%% Acknowledgements
-%\newpage
+% Acknowledgements
+\newpage
 \pagenumbering{roman}
-%
-%acknowledgements
-%
-%% Dedication
-%\newpage
-%
-%dedication
-%
-%% Abstract
-%\newpage
-%
-%abstract
+
+acknowledgements
+
+% Dedication
+\newpage
+
+dedication
+
+% Abstract
+\newpage
+
+\section{Abstract}
+Maintenance and upgrades are a fundamental requirement of any software-based tool, and the resources within the field of Bioinformatics are no exception. Too often, the combination of self-taught programmers in former Biologists and the broader lack of a software development ecosystem can propagate elevated degrees of software entropy, also known as technical debt. It is then a fair assumption to say that this level of entropy is higher than in fields which more consistently employ the skills of professional developers. Here, we present the case of the Candidate Cancer Gene Database as a minor instance of taking advantage of an upgrade cycle in an attempt to service some of this technical debt. The goals of this project ultimately strived to acheive the implementation of a new, core framework at the base of the data integration backend as well as a more modern and simplified web front-end. In all, this represented a complete rebuild of the application while preserving the existing conceptual implementation. Our work served to establish a new application with greater structural simplicity, improved resource use, and, most relevant, a code base which will be easier to maintain and upgrade in the future.
 
 \tableofcontents
 \addcontentsline{toc}{chapter}{List of Tables}
@@ -146,7 +147,7 @@ In this work, we present a small but emblematic case that illustrates these shif
 \section{Methods}
 
 \subsection{Project Requirements}
-This project's goal was ultimately to upgrade the existing CCGD\@. In setting out to do this, we established several requirements that took into consideration the opportunity to seize a routine set of server transitions to implement improved functionality. Specifically, the central output of the service should be retained in the eyes of the end user. Beyond this, attempting to fully reconstruct the backend provided for significant improvements (see Table~\ref{table:projectReqs}). These goals more broadly were: upgrade the existing server build to RHEL 7; rewrite web interface in a more modern framework; streamline the central table construction process using Rshiny; implement improved ability to manipulate table by product owner; employ improved software development best practices; generally seek opportunities for codebase and resource utilization improvements. Ultimately, all of these taken together were intended to serve some form of modernization and simplification.
+This project's goal was ultimately to upgrade the existing CCGD\@. In setting out to do this, we established several requirements that took into consideration the opportunity to seize a routine set of server transitions to implement improved functionality. Specifically, the central output of the service should be retained in the eyes of the end user. Beyond this, attempting to fully reconstruct the backend provided for significant improvements (see Table~\ref{table:projectReqs}). These goals more broadly were: upgrade the existing server build to RHEL 7; rewrite web interface in a more modern framework; streamline the central table construction process using Rshiny; implement improved ability to manipulate table and web content by product owner (Tim Starr); employ improved software development best practices; generally seek opportunities for codebase and resource utilization improvements. Ultimately, all of these taken together were intended to serve some form of modernization and simplification.
 
 \begin{table}[H]
     \caption{Project Requirements}\label{table:projectReqs}
@@ -158,15 +159,15 @@ This project's goal was ultimately to upgrade the existing CCGD\@. In setting ou
         \midrule
         1&server OS&upgrade server OS&RHEL7&Transition of architecture for public server host. This is required by University OIT due to end of life schedule for RHEL6.\\
         \midrule
-        2&web front-end&rewrite web interface&Rmarkdown&Improvements to the web interface written in a modern, simplified language. This will improved access to content creation and allow for automation in site rendering.\\
+        2&web front-end&rewrite web interface&Rmarkdown&Improvements to the web interface written in a modern, simplified language. This improved access to content creation and allowed for automation in front-end rendering.\\
         \midrule
-        3&table build&rewrite table build&Rshiny&Rshiny offers a dramatic improvement to replace the existing process by merging the table build back-end with a modern web display of the app interface.\\
+        3&table build&rewrite table build&Rshiny&Rshiny offered a dramatic improvement to replace the existing process by merging the table build back-end with a modern web display of the app interface.\\
         \midrule
-        4&table update&improved admin controls&BASH/R&Existing app version confined some content controls to app author, preventing contributions by app owner.\\
+        4&content update&improved admin controls&BASH/R&Old app version confined some content controls to app author, limiting ability to make contributions by product owner (Tim Starr).\\
         \midrule
-        5&version control&implement best practices&git/docs&No version control was used in the original development of the app. This and other documentation practices were expanded in the rewrite\\
+        5&version control&implement best practices&git/docs&No version control was used in the original development of the app. This and other documentation practices were expanded in the rewrite.\\
         \midrule
-        6&n/a&resource improvements&codebase&Due to the lack of some best practices, there were many opportunities to make impactful resource improvements.\\
+        6&multiple&resource improvements&codebase&Due to the lack of some best practices, there were many opportunities to make impactful resource improvements.\\
         \bottomrule
     \end{tabular}
     \addtolength\tabcolsep{+0.2em}
@@ -174,13 +175,14 @@ This project's goal was ultimately to upgrade the existing CCGD\@. In setting ou
 \end{table}
 
 \subsection{Server Setup}
-At it's core, the OS transition from RHEL 6 to 7 was the original project requirement that spurred this work. Existing hosting for the CCGD was owned by university OIT who established an end of life date for the current server OS\@. As a result, the bulk of core architecture implementation followed a narrow prescription for what was termed a ``Fully Managed'' RHEL7 install as detailed by the OIT-LPT Public-Docs~\cite{oitOITLPTPublicDocsThis}. Contrary to the implications of this installation name, a Fully Managed administration carried a mixture of privileges and management roles that were shared between OIT and our group. This was accomplished by leveraging a chef admin paradigm that was allowed limited sudo privileges within the hosted ecosystem. Importantly, items that extend from the core of server administration such as virtual machine creation, backups, and core security were handled by OIT\@. This left our group with the more focused task of administering exclusively our application.
+At it's core, the OS transition from RHEL 6 to 7 was the original project requirement that spurred this work. Existing hosting for the CCGD was owned by university OIT who established an end of life date for the current server OS\@. As a result, the bulk of core architecture implementation followed a narrow prescription for what was termed a ``Fully Managed'' RHEL7 install as detailed by the OIT-LPT Public-Docs~\cite{oitOITLPTPublicDocsThis}. Contrary to the implications of this installation name, a Fully Managed administration carried a mixture of privileges and management roles that were shared between OIT and our group. This was accomplished by leveraging a chef admin paradigm that allowed limited sudo privileges within the hosted ecosystem. Importantly, items that extend from the core of server administration such as virtual machine creation, backups, and core security were handled by OIT\@. This left our group with the more focused task of administering exclusively our application.
 
 \subsection{Web Framework}
 The upgraded build of the CCGD employed a completely different front-end architecture centralized around R web services environment. Built with dynamic modularity and data portability in mind, the Rmarkdown framework offers the ability to render several independent markdown files into a unified website. We applied this feature set to produce our general site structure and content as it allowed for a massive simplification in web design. While following the existing site map, we recreated the raw content of the existing application as independent markdown files. Within the Rmarkdown format guide. The keystone feature of the Rmarkdown framework that allows for this unified rendering is the use of a YAML configuration header (see Figure~\ref{fig:siteYaml}). The \texttt{rmarkdown::render\_site} function leverages this configuration file to align and sequentially render content and styling in tandem for a complete site map [citeme rmarkdown docs]. Additionally, individual markdown pages employ this same configuration paradigm for page-specific parameters and formatting guidelines (see Figure~\ref{fig:pageHeader}).
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{fig/rmarkdown_flow.pdf}
+    \center{}
+    \includegraphics[width=0.8\textwidth]{fig/rmarkdown_flow.pdf}
     \caption[Rmarkdown Rendering Flow]{\textbf{Rmarkdown Rendering Flow} The core web framework was created using a stitch process composed of two document conversion steps, which are both contained in the single \texttt{rmarkdown::render\_site} command. These two transformations are done by the R-specific knitr package and then the open-source Pandoc tool. The first phase holds less relevance in particular as its role is to execute R code chunks, of which there are few in our page content. The markdown output from this step is seamlessly injected into a Pandoc conversion which offers a large variety in document output. Specific to our case, the Pandoc conversion paired with a companion YAML configuration file allows for multidocument markdown-to-html rendering which is assembled as a complete site stack. As a single process, this function generates an integrated, modern web front-end from content written in a light-weight syntax with almost none of the typical complexity of full-scale web page creation.}\label{fig:renderFlow}
 \end{figure}
 
@@ -189,25 +191,25 @@ responsive web design
 An important distinction in summarizing the implementation of web framework is to point out that the Rshiny app, which contains the gene table, is assembled and hosted as a function separate from the general site rendering. More specifically to the web design, the shiny app is hosted at the common public repository \href{https://ctastad.shinyapps.io/table_app/}{\texttt{shinyapps.io}} and rendered in an inline iframe on the site search page. In the eyes of the user this presents a seamless transition, but the functional contrast permits for differential rendering between the two. This allows for the continuous integration of external sources that feed the table while eliminating the need to regularly render the static site content.
 
 \begin{figure}
-\centering
-\begin{subfigure}[t]{.3\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{fig/page_header.pdf}
-\subcaption{index.Rmd individual page header}\label{fig:pageHeader}
-\end{subfigure}%
-\hspace{2em}
-\begin{subfigure}[t]{.3\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{fig/site_header.pdf}
-\caption{\_site.yml: file for site assembly}\label{fig:siteYaml}
-\end{subfigure}
-\hspace{2em}
-\begin{subfigure}[t]{.2\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{fig/yaml_illustration.pdf}
-\caption{Illustration of yaml implementation}\label{fig:yamlIllust}
-\end{subfigure}
-\caption[YAML Configuration Segments]{\textbf{YAML Configuration Segments} Pictured above are the two forms of complete YAML configuration headers utilized in Rmarkdown rendering. The central takeaway from this illustration is to recognize the heavy lifting performed by these relatively small code segments. Figure~\ref{fig:pageHeader} provides an example of the header found in every~.Rmd file that make-up the respective pages of the site. These headers provide primarily formatting configuration for the rendering process but include broader functions as well. The header can be as simple as listing a title and Pandoc output type or include LaTex bibliography functionality and read-in style sheets like the one shown. Either way, a few lines of configuration generate wildly different outputs. Figure~\ref{fig:siteYaml} presents the YAML file which serves to assemble independent Rmarkdown files into a joined website as described in figure~\ref{fig:renderFlow}. There is less configuration here as the only real purpose is to define the site tree for the \texttt{rmarkdown::render\_site} process.}\label{fig:yamls}
+    \center{}
+    \begin{subfigure}[t]{.3\textwidth}
+        \center{}
+        \includegraphics[width=\textwidth]{fig/page_header.pdf}
+        \subcaption{index.Rmd individual page header}\label{fig:pageHeader}
+    \end{subfigure}%
+    \hspace{2em}
+    \begin{subfigure}[t]{.3\textwidth}
+        \center{}
+        \includegraphics[width=\textwidth]{fig/site_header.pdf}
+        \caption{\_site.yml: file for site assembly}\label{fig:siteYaml}
+    \end{subfigure}
+    \hspace{2em}
+    \begin{subfigure}[t]{.2\textwidth}
+        \center{}
+        \includegraphics[width=0.8\textwidth]{fig/yaml_illustration.pdf}
+        \caption{Illustration of yaml implementation}\label{fig:yamlIllust}
+    \end{subfigure}
+    \caption[YAML Configuration Segments]{\textbf{YAML Configuration Segments} Pictured above are the two forms of complete YAML configuration headers utilized in Rmarkdown rendering. The central takeaway from this illustration is to recognize the heavy lifting performed by these relatively small code segments. Figure~\ref{fig:pageHeader} provides an example of the header found in every~.Rmd file that make-up the respective pages of the site. These headers provide primarily formatting configuration for the rendering process but include broader functions as well. The header can be as simple as listing a title and Pandoc output type or include LaTex bibliography functionality and read-in style sheets like the one shown. Either way, a few lines of configuration generate wildly different outputs. Figure~\ref{fig:siteYaml} presents the YAML file which serves to assemble independent Rmarkdown files into a joined website as described in figure~\ref{fig:renderFlow}. There is less configuration here as the only real purpose is to define the site tree for the \texttt{rmarkdown::render\_site} process.}\label{fig:yamls}
 \end{figure}
 
 \subsection{Data Integration Process}
@@ -216,8 +218,8 @@ Improvements to the data integration process were accomplished using a more simp
 Redundancy reduction was achieved within script functionality and storage utilization. Dedicated script actions that performed house keeping functions, as seen in the~\texttt{build\_table.sh} and~\texttt{backup.sh} (see Figure~\ref{fig:subroutine}), made specific effort to clear all transient data content that otherwise did not require persistent storage. This accounted for a large portion of persistent data that was previously left on the server. Additionally, script reduction was improved through a reorganization of the general subroutines within the application. A reassignment of script actions were also implemented in a more cohesive manner which allowed for both improved simplicity and modularity. This is most effectively seen in the manual control~\texttt{ccgd\_upload.sh} script as the developer has the flexibility to opt out of executing several functions within the app (see Figure~\ref{fig:subroutine}) if run manually. All of this core functionality was then was automated with scheduled using system cron jobs to sustain routine maintenance in upkeep of the application's table.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{fig/subroutine_flow.pdf}
+    \center{}
+    \includegraphics[width=0.8\textwidth]{fig/subroutine_flow.pdf}
     \caption[Subroutine flow]{\textbf{Subroutine flow} This diagram offers an overview of the actions and relationships within the executable scripts of the CCGD\@. Prior functionality was more effectively delineated into subroutines for better modularity. Also shown is the added functionality brought by the rebuilt data integration process. A hallmark of the difference between this new and old process is the use of R and shiny as the central frameworks to build the table as implemented in the \texttt{build\_table.R} and \texttt{app.R} scripts. It can also be seen that the integration process is automated by the system with a cron job among other maintenance tasks. Last, the \texttt{ccgd\_upload.sh} and \texttt{knit\_site.R} scripts were created to allow for introduction of new table data or the manual execution of any of the app subroutines.}\label{fig:subroutine}
 \end{figure}
 
@@ -227,8 +229,8 @@ In order to replace the existing CCGD search functionality our group employed th
 The structure of a general shiny app follows a highly reduced and consistent paradigm, and ours is no different. The broad format of this work flow is \texttt{ui + server $\rightarrow$ deployment}. The server specifically has a discrete composition made up of reactive constructs of inputs, expressions, and outputs that shape the app's reactive graph, which forms, more accurately, the discrete operation of the application. The assembly and movement of this graph is both emblematic and practical in displaying the modularity and improved resource utilization of the reactive elements. Without belaboring the description of reactive programming, this model employs a declarative programming style that allows for lazy code execution~\cite{wickhamMasteringShinyBook}. What this amounts to in application is for the developer to define loose controls at a higher level while allowing the code to passively fill these requirements. This translates to greater flexibility to both the developer and the machine as resource use can be reduced through modularity in code execution.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{fig/reactive_graph.pdf}
+    \center{}
+    \includegraphics[width=0.8\textwidth]{fig/reactive_graph.pdf}
     \caption[\texttt{table\_app/app.R} Reactive Graph]{\textbf{\texttt{table\_app/app.R} Reactive Graph} An Rshiny app design can be defined by its reactive graph. The graph above displays the process flow of our app by highlighting modularity in the data streams around the table filtering process. The reactive web design is intended to allow for the automatic implementation of changed states applied through the alternate paths of the graph. This allows for the passive display of a static representation of the table while allowing for dynamic adjustment to filtering inputs through the \texttt{[Var] $\rightarrow$ [Var].values} path. Additionally, this declarative model provides for an interactive table array while only drawing computation when the appropriate event is called.}\label{fig:reactiveGraph}
 \end{figure}
 
@@ -237,15 +239,15 @@ Within the scope of the \href{https://github.com/ctastad/ccgd/blob/master/table_
 A small but fundamental element of our shiny app design was the use of the \texttt{renderDataTable} function in generating the \texttt{searchTable} output. The prior iteration of the CCGD architecture employed a relatively disproportionate Structured Query Language (SQL) database to store and serve numerous component elements that made up the table. Instead, the new implementation of our app now leverages the server-side processing capability of the DataTables JavaScript library. More specifically, we set parameters to create a reactive version of our function which allows for paging, searching, filtering, and sorting in real-time within the shiny server infrastructure [citeme DataTables]. Through this function alone we established new server paradigm that eliminated the SQL database.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{fig/parse_flow.pdf}
+    \center{}
+    \includegraphics[width=0.8\textwidth]{fig/parse_flow.pdf}
     \caption[Server-side Processing Flow]{\textbf{Server-side Processing Flow} This diagram illustrates a small but fundamental change applied to the application table processing through the lens of the server-client relationship. The ``old'' flow shows the prior table processing procedure, which is highly typical of a classic Linux-Apache-MySQL-PHP (LAMP) stack website. Inputs and calls made by the browser occur from and within a client-side rendering engine which delivers a static request to the server-side SQL database. The database returns content parsed in Extensible Markup Language (XML) to the browser that is rendered and displayed. Our fundamental shift was to move this data processing entirely to JavaScript. Typically, this would result in client-side processing that would prohibit large tables like ours. Instead, we leveraged a server-side engine to handle Asynchronous JavaScript and XML (AJAX) requests which are returned with parsed JavaScript Object Notation (JSON), shown in the ``new'' flow. This processing flow allows for the use of a single~.csv file as the data source in table presentation, ordering, and pagination, ultimately eliminating the need for a SQL architecture.}\label{fig:parseFlow}
 \end{figure}
 
 \subsection{Best Practices}
 Some features of the software best practices from the previous version of the CCGD were done quite well such as the level of detail in the documentation. At the same time, many other important areas were missing in the development and maintenance of the application. Most prominent among these were the lack of any degree of version control and relatively inconsistent design principles. As a result, our group employed or improved upon several methods in an effort to elevate the quality, usability, and portability of our codebase and application~\cite{finchamSoftwareDevelopmentPractices2011}.
 
-Throughout the course of the project we utilized a private github code repository for hosting and change tracking. This work has since been published on a public repository and assigned a DOI number through \href{https://zenodo.org/record/4422027}{Zenodo}. Furthering the spirit of project integrity, we expanded on the nature of the documentation for the user and, more prominently, the application owner. Specifically, documentation that was previously written in a Microsoft Word file was now recreated in markdown, and a notable tone and detail shift was made in serving the information portability between administrators.
+Throughout the course of the project we utilized a private github code repository for hosting and change tracking. This work has since been published on a public repository and assigned a DOI number through \href{https://zenodo.org/record/4422027}{Zenodo}. Furthering the spirit of project integrity, we expanded on the nature of the documentation for the user and, more prominently, the product owner. Specifically, documentation that was previously written in a Microsoft Word file was now recreated in markdown, and a notable tone and detail shift was made in serving the information portability between administrators.
 
 In approaching the process of development, we applied a philosophy of tidy code creation to both syntax and design. A supporting method in creating a more elegant code syntax was the use of R universe tools, Tidyverse and Rmarkdown. Both offer a coding grammar that is centered around accessibility and simplification of high-level language organization~\cite{wickhamWelcomeTidyverse2019}. Furthering this simplification, we sought opportunities to deduplicate and extract subroutines in the table integration process in an effort to streamline resource constraints. Finally, another notable area for improvement we sought was in disk space utilization. The existing integration process relied on the continuous presence of what were several intermediary files that occupied a sizable disk capacity. To combat this we specifically reworked several data transformation steps to allow for the post-process elimination of these temporary data objects.
 
@@ -267,24 +269,24 @@ Special consideration was given to resource use throughout the refactoring proce
 Another broad concept we addressed in elevating general efficiency was exploring general concepts of technical debt. This idea is addressed in our approach to dealing with space constraints on some level, but it is a problem that can generally permeate an entire codebase. An effective illustration of this is given by the qualitative view of the total file tree present in the site directory (see Figure~\ref{fig:fileTree}). It can be difficult to pin point the driving factor in what leads to the accumulation of software entropy, but it is easy to see it exists nonetheless. By continuing our emphasis on best practices, we were able to leverage the simplified architecture upgrades alongside elimination of some functional redundancy to generate a working code base that spans across a much more tidy tree.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{fig/space_tree.pdf}
-\caption[Disk Use Comparison]{\textbf{Disk Use Comparison} shows a treemap which illustrates the substantial difference in disk utilization between CCGD versions. The original to-scale map on the left gives an exploded view distinguishing the updated app treemap in the bottom right corner with all remaining elements of the map belonging to the old version. This visual comparison emphasizes the [10x] space decrease made during the upgrade. The fruits of several design choices are present in this space reduction. The most notable impacts of these choices are several massive files eliminated or substantially reduced (noted by asterisk). Notably, the dump.sql file shown represented the disproportionate size of the database and space payoff earned by eliminating it. Also, it can be seen that the persistent cosmic.txt data file is present in both versions. Improvements made in post-process trimming of files like this also produced substantial space returns. Last, the rebuilt table build process transitioned several data objects shown from persistent to transient.}\label{fig:spaceTree}
+    \center{}
+    \includegraphics[width=0.8\textwidth]{fig/space_tree.pdf}
+    \caption[Disk Use Comparison]{\textbf{Disk Use Comparison} shows a treemap which illustrates the substantial difference in disk utilization between CCGD versions. The original to-scale map on the left gives an exploded view distinguishing the updated app treemap in the bottom right corner with all remaining elements of the map belonging to the old version. This visual comparison emphasizes the [10x] space decrease made during the upgrade. The fruits of several design choices are present in this space reduction. The most notable impacts of these choices are several massive files eliminated or substantially reduced (noted by asterisk). Notably, the dump.sql file shown represented the disproportionate size of the database and space payoff earned by eliminating it. Also, it can be seen that the persistent cosmic.txt data file is present in both versions. Improvements made in post-process trimming of files like this also produced substantial space returns. Last, the rebuilt table build process transitioned several data objects shown from persistent to transient.}\label{fig:spaceTree}
 \end{figure}
 
 Ref crossdirstat
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{fig/file_tree.pdf}
+    \center{}
+    \includegraphics[width=0.8\textwidth]{fig/file_tree.pdf}
     \caption[Project Directory File Tree Comparison]{\textbf{Project Directory File Tree Comparison} The above figure offers a qualitative assessment of an element of technical debt that was improved in refactoring. Shown are the file trees of the site directories of the new and old projects. What is illustrated is a dramatic improvement in the tree size and complexity through the elimination of a large degree of content, log, and style files. This is accentuated even further when comparing the source code. This was accomplished both in the intentional design of eliminating content redundancy and in the streamlined structure of the Rmarkdown rendering process. This allowed for the elimination of several dimensions of broader web design and table build data elements.}\label{fig:fileTree}
 \end{figure}
 
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{fig/interface.pdf}
-    \caption[Search Interface Improvements]{\textbf{Search Interface Improvements}}\label{fig:interface}
+    \center{}
+    \includegraphics[width=0.8\textwidth]{fig/interface.pdf}
+    \caption[Search Interface Changes]{\textbf{Search Interface Changes}}\label{fig:interface}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
