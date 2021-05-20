@@ -1,0 +1,190 @@
+---
+title: "Cool Title"
+author: "Chris Tastad"
+date: "`r format(Sys.time(), '%b %d, %Y')`"
+output:
+  revealjs::revealjs_presentation:
+    center: false
+    theme: night
+    highlight: zenburn
+    transition: none
+    reveal_options:
+      controls: false
+      height: "100%"
+      margin: 0.04
+      slideNumber: true
+      previewLinks: true
+---
+
+## Technical Debt fig
+
+## CCGD Overview {.center}
+
+## Breakdown of build table process
+
+```{r global_options, include = F}
+knitr::opts_chunk$set(eval = F, echo = F, warning = F, message = F)
+```
+
+## Application Concept
+
+## Forward Transposon Screens
+
+## Project Requirements
+
+::: {#table:projectReqs}
+      Feature           Goal                       Framework   Description
+  --- ----------------- -------------------------- ----------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1   server OS         upgrade server OS          RHEL7       Transition of architecture for public server host. This is required by University OIT due to end-of-life schedule for RHEL6.
+  2   web front-end     rewrite web interface      Rmarkdown   Improvements to the web interface written in a modern, simplified language. This improved access to content creation and allowed for automation in front-end rendering.
+  3   table build       rewrite table build        Rshiny      Rshiny offered a dramatic improvement to replace the existing process by merging the table build back-end with a modern web display of the app interface.
+  4   content update    improved admin controls    BASH/R      Old app version confined some content controls to app author, limiting ability to make contributions by product owner (Tim Starr).
+  5   version control   implement best practices   git/docs    No version control was used in the original development of the app. This and other documentation practices were expanded in the rewrite.
+  6   multiple          resource improvements      codebase    Due to the lack of some best practices, there were many opportunities to make impactful resource improvements.
+
+:::
+
+## Rmarkdown Rendering Flow
+<img src="./fig/rmarkdown_flow.svg">
+
+## YAML Configuration Segments
+
+<div class="column">
+
+```{r echo = T}
+title: "Candidate Cancer Gene Database"
+bibliography: refs/ccgd_paper.bib
+nocite: '@*'
+output:
+    html_document:
+        includes:
+            in_header: "styles/favicon.html"
+            after_body: "styles/footer.html"
+        css: styles/styles.css
+        theme: readable
+---
+
+```
+
+```{r echo = T}
+name: "Candidate Cancer Gene Database"
+navbar:
+    title: "CCGD"
+    left:
+        - text: "Home"
+          href: index.html
+        - text: "Search"
+          href: search.html
+        - text: "Help"
+          href: help.html
+        - text: "References"
+          href: references.html
+        - text: "Contact"
+          href: contact.html
+
+```
+
+</div>
+
+![](./fig/yaml_illustration.svg)
+
+## Subroutine Flow
+![](./fig/subroutine_flow.svg)
+
+## Table Reactive Graph
+![](./fig/reactive_graph.svg)
+
+## Server-side Processing Flow
+![](./fig/parse_flow.svg)
+
+## Search Interface Changes
+![](./fig/interface.svg)
+
+## Disk Use Comparison
+![](./fig/space_tree.svg)
+
+## Project Directory File Tree Comparison
+![](./fig/file_tree.svg)
+
+## Documentation
+
+## app.R code
+
+## markdown code
+
+## List of app improvements
+
+## The End {.center}
+
+<!-- style -->
+
+<style>
+
+body {
+  background: #2e3440;
+}
+
+.column {
+  column-count: 2;
+}
+
+div.sourceCode {
+  background-color: #2e3440;
+}
+
+.sourceCode {
+  background-color: #393f4b;
+}
+
+.reveal .progress span {
+  background: #7f9f7f;
+}
+
+.reveal section img{
+  border: 30px solid #e0e1e2;
+  border-radius: 10px;
+  }
+
+</style>
+
+<!-- slide templates
+
+## Section Title {.center}
+
+
+## Multi-Column Slide
+
+<div class="column">
+
+### column1
+- some cool words
+- https://www.merriam-webster.com/dictionary/wherever
+
+### column2
+- some more cool words
+
+</div>
+
+
+## Figure Slide
+```{r eval=T}
+attach(mtcars)
+par(mfrow=c(2,2))
+plot(wt,mpg, main="Scatterplot of wt vs. mpg")
+plot(wt,disp, main="Scatterplot of wt vs disp")
+hist(wt, main="Histogram of wt")
+boxplot(wt, main="Boxplot of wt")
+```
+
+
+## Code Slide
+
+```{r echo = T}
+x = 1
+if x == 1:
+    # indented four spaces
+    print("x is 1.")
+```
+
+-->
+
