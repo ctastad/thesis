@@ -1,34 +1,72 @@
 ---
-title: "Cool Title"
-author: "Chris Tastad"
-date: "`r format(Sys.time(), '%b %d, %Y')`"
+title: "Refactoring the Candidate Cancer Gene Database"
+author: "Christopher Tastad"
+date: "May 21, 2021"
 output:
   revealjs::revealjs_presentation:
+    self_contained: false
     center: false
     theme: night
     highlight: zenburn
     transition: none
+    reveal_plugins: ["menu", "notes"]
     reveal_options:
-      controls: false
+      showNotes: "separate-page"
+      controls: true
       height: "100%"
       margin: 0.04
       slideNumber: true
       previewLinks: true
 ---
 
-## Technical Debt fig
-
-## CCGD Overview {.center}
-
-## Breakdown of build table process
+## Presentation ToC
+> - Original Concept
+> - Challenges
+> - Refactoring the Concept
+> - Outcomes of Refactoring
+> - Conclusions
 
 ```{r global_options, include = F}
 knitr::opts_chunk$set(eval = F, echo = F, warning = F, message = F)
 ```
 
-## Application Concept
+# Original Concept {.center}
+
+--------------------------------------------------------------------------------
 
 ## Forward Transposon Screens
+
+--------------------------------------------------------------------------------
+
+## CCGD Overview
+
+--------------------------------------------------------------------------------
+
+## Breakdown of build table process
+
+--------------------------------------------------------------------------------
+
+## OIT setup
+
+################################################################################
+
+# Challenges {.center}
+
+--------------------------------------------------------------------------------
+
+## Forced Upgrades
+
+--------------------------------------------------------------------------------
+
+## Technical Debt
+> - test
+> - test
+
+################################################################################
+
+# Refactoring the Concept {.center}
+
+--------------------------------------------------------------------------------
 
 ## Project Requirements
 
@@ -44,10 +82,16 @@ knitr::opts_chunk$set(eval = F, echo = F, warning = F, message = F)
 
 :::
 
-## Rmarkdown Rendering Flow
-<img src="./fig/rmarkdown_flow.svg">
+--------------------------------------------------------------------------------
 
-## YAML Configuration Segments
+## Front-end Framework
+![](./fig/rmarkdown_flow.svg)
+
+#### Rmarkdown rendering flow {.center}
+
+--------------------------------------------------------------------------------
+
+## Front-end Framework
 
 <div class="column">
 
@@ -86,33 +130,233 @@ navbar:
 
 </div>
 
-![](./fig/yaml_illustration.svg)
+#### YAML configuration segments {.center}
 
-## Subroutine Flow
-![](./fig/subroutine_flow.svg)
+<center>
+<img src="./fig/yaml_illustration.svg">
+</center>
 
-## Table Reactive Graph
+#### YAML illustration
+
+--------------------------------------------------------------------------------
+
+## Front-end Framework
 ![](./fig/reactive_graph.svg)
 
-## Server-side Processing Flow
+#### table reactive graph {.center}
+
+--------------------------------------------------------------------------------
+
+## Back-end Framework
 ![](./fig/parse_flow.svg)
 
-## Search Interface Changes
-![](./fig/interface.svg)
+#### server-side processing flow {.center}
 
-## Disk Use Comparison
-![](./fig/space_tree.svg)
+--------------------------------------------------------------------------------
 
-## Project Directory File Tree Comparison
+## Back-end Framework
+![](./fig/subroutine_flow.svg)
+
+#### subroutine flow {.center}
+
+################################################################################
+
+# Outcomes of Refactoring {.center}
+
+--------------------------------------------------------------------------------
+
+## Simplified Codebase
+```{r echo = T}
+df <- read.csv("ccgd_export.csv") # read in base source file
+speciesList <- c("Mouse", "Human", "Rat", "Fly", "Fish", "Yeast")
+
+# inputs are arranged in column, width orientation
+# each column variable set represents a single input and its params
+# next row of inputs layout
+ui <- fluidPage( # build shiny app UI
+  fluidRow(
+    column(
+      2,
+      selectizeInput("Species",
+        label = "Species",
+        choices = speciesList
+      )
+    ),
+
+    column(
+      3,
+      selectizeInput("Study",
+        label = "Study",
+        choices = sort(unique(df$Study)),
+        selected = NULL,
+        multiple = TRUE,
+        options = list(placeholder = "All studies")
+      )
+    ),
+
+    column(
+      3,
+      selectizeInput("Cancer",
+        label = "Cancer",
+        choices = sort(unique(df$Cancer)),
+        selected = NULL,
+        multiple = TRUE,
+        options = list(placeholder = "All cancers")
+      )
+    ),
+
+    column(
+      4,
+      textAreaInput("Genes",
+        label = "Genes",
+        placeholder = "GeneA,GeneB,GeneC..."
+      )
+    )
+  ),
+
+  fluidRow(
+    column(
+      2,
+      # button for table export
+      downloadButton("downloadData",
+        label = "Download"
+      )
+    )
+  ),
+
+  hr(),
+
+  dataTableOutput("searchTable")
+)
+```
+
+#### app.R Rshiny process snippet {.center}
+
+--------------------------------------------------------------------------------
+
+## Simplified Codebase
+
+```{r echo = T}
+---
+title: "Candidate Cancer Gene Database"
+bibliography: refs/ccgd_paper.bib
+nocite: '@*'
+output:
+    html_document:
+        includes:
+            in_header: "styles/favicon.html"
+            after_body: "styles/footer.html"
+        css: styles/styles.css
+        theme: readable
+---
+
+The Candidate Cancer Gene Database (CCGD) was developed to make accessible a collated set of results from transposon-based forward cancer genetic screens in mice. The value in doing this is to give investigators the ability to quickly filter through the results of many such screens in an effort to determine the candidacy of a gene for its role in cancer.
+
+***
+
+### Background
+
+This work is a product of the [Starr Lab](http://www.med.umn.edu/starrlab/) at the [University of Minnesota](http://www.umn.edu/). The Starr Lab is affiliated with the [Center for Genome Engineering](http://www.cge.umn.edu/), the [Masonic Cancer Center](http://www.cancer.umn.edu/), the Department of [OB/GYN](http://www.obgyn.umn.edu/), and the Department of [Genetics, Cell Biology, and Development](http://www.cbs.umn.edu/gcd/).
+
+##### Contributions
+
+The idea for creating this database originated from Tim Starr, Vincent Keng, and David Largaespada at UMN. Erik Nyre and Ken Abbott developed the original database, with help from Juan Abrahante. A complete website and backend overhaul was conducted by Christopher Tastad in 2019.
+
+* Ken Abbott
+* [Erik Nyre](https://www.dorsey.com/people/n/nyre-erik)
+* [Juan Abrahante](https://research.umn.edu/units/umii/about-us/staff-directory/juan-e-abrahante-phd)
+* [Christopher Tastad](https://github.com/ctastad)
+
+***
+
+##### Updates
+
+The most recent table build was completed on:
+
+<object type="text/html"
+        height=40px
+        data="build_date.txt"></object>
+
+```
+
+#### index.html page content snippet {.center}
+
+--------------------------------------------------------------------------------
+
+## Simplified Codebase
 ![](./fig/file_tree.svg)
 
-## Documentation
+#### Project Directory File Tree Comparison {.center}
 
-## app.R code
+--------------------------------------------------------------------------------
 
-## markdown code
+## Visual Improvements
+![](./fig/interface.svg)
 
-## List of app improvements
+#### search interface changes {.center}
+
+--------------------------------------------------------------------------------
+
+## Resource Use Reduction
+![](./fig/space_tree.svg)
+
+#### disk use comparison {.center}
+
+--------------------------------------------------------------------------------
+
+## Improved Admin Controls
+
+```{r echo = T}
+#   Executed:   locally from the CCGD project dir
+#   Options:    -b build (TRUE,FALSE) -s full proj dir sync (TRUE,FALSE)
+#               -t table upload file -r reference upload file
+#               -k (TURE,FALSE) render site files
+
+# pass arguments from cli
+while getopts b:t:r:s: option
+do
+    case "${option}"
+        in
+        b) build=${OPTARG};;
+        t) table=${OPTARG};;
+        r) refs=${OPTARG};;
+        s) sync=${OPTARG};;
+    esac
+done
+```
+
+#### ccgd_upload.sh script snippet {.center}
+
+--------------------------------------------------------------------------------
+
+## Sustainable Development
+![](./fig/documentation.png)
+
+#### project documentation example {.center}
+
+--------------------------------------------------------------------------------
+
+## Sustainable Development
+
+![](./fig/github.png)
+
+#### public application github repository
+
+--------------------------------------------------------------------------------
+
+## Sustainable Development
+
+![](./fig/release.png)
+
+#### Zenodo-supplied DOI and release for reproducibility {.center}
+
+################################################################################
+
+# Conclusions {.center}
+
+## Conclusions
+
+## Acknowledgements
 
 ## The End {.center}
 
@@ -136,13 +380,19 @@ div.sourceCode {
   background-color: #393f4b;
 }
 
-.reveal .progress span {
-  background: #7f9f7f;
-}
-
-.reveal section img{
+.reveal section img {
   border: 30px solid #e0e1e2;
   border-radius: 10px;
+  }
+
+  .reveal p {
+    text-align: left;
+  }
+  .reveal ul {
+    display: block;
+  }
+  .reveal ol {
+    display: block;
   }
 
 </style>
