@@ -15,13 +15,13 @@ output:
       controls: true
       height: "100%"
       margin: 0.04
-      slideNumber: true
+      slideNumber: "c/t"
       previewLinks: true
 ---
 
 ## Presentation ToC
 > - Original Concept
-> - Challenges
+> - Issue
 > - Refactoring the Concept
 > - Outcomes of Refactoring
 > - Conclusions
@@ -32,35 +32,177 @@ knitr::opts_chunk$set(eval = F, echo = F, warning = F, message = F)
 
 # Original Concept {.center}
 
+## Original Concept
+
+![](./fig/ccgd_header.png)
+
+> - Cancer bio is complicated.
+> - Driver genes present primary targets.
+> - Screening methods...
+
+<div class="notes">
+- look at the origins and maintenance of the ccgd
+- why does such a tool exist
+- what purpose does it offer the field
+
+- Cancer biology presents a highly complex genetic landscape.
+- Cohorts of genes act as drivers for the progression of cancer.
+- These genes present targets for study and development of therapeutics.
+- Ultimately, we need to understand and simplify cancer gene targets.
+- Screening methods offer quicker access to wide swaths of these targets.
+</div>
+
 --------------------------------------------------------------------------------
 
 ## Forward Transposon Screens
 
+![](./fig/transposon_screen_mech.jpg)
+
+<small>Ranzani, Marco, et al. “Cancer Gene Discovery: Exploiting Insertional Mutagenesis.” Mol Cancer Res, vol. 11, no. 10, 2013, pp. 1141–1158., doi:10.1158/1541-7786.MCR-13-0244.</small>
+
+<div class="notes">
+- gene cassette is used to place a genetic payload at some region relative to a transcriptional site to induce mutagenesis
+- figure shows 3 mechanisms to derive outcome
+- A: enhancer insertion likely upstream of promoter.
+- B: vector integrates within some transcriptional range and co-ops promotor function from gene itself.
+- C: intragenic insertions may disrupt coding regions generating novel proteins with GoF or LoF outcomes impacting tumorigenesis or tumor suppression.
+</div>
+
 --------------------------------------------------------------------------------
 
-## CCGD Overview
+## Forward Transposon Screens
+
+![](./fig/transposon_screen.jpg)
+
+<small>Ranzani, Marco, et al. “Cancer Gene Discovery: Exploiting Insertional Mutagenesis.” Mol Cancer Res, vol. 11, no. 10, 2013, pp. 1141–1158., doi:10.1158/1541-7786.MCR-13-0244.</small>
+
+<div class="notes">
+- transposon method is applied en masse within mice.
+- process of extraction, isolation, seq, and analysis identifies CIS groups.
+- validation takes place in vitro or in vivo for oncogenic potential with orthologous association to human candidates.
+- idea for CCGD comes in at the star.
+</div>
 
 --------------------------------------------------------------------------------
 
-## Breakdown of build table process
+## CCGD Goals
+
+> To facilitate analysis of driver genes to catalog all common insertion sites (CISs) and their corresponding genes identified in published studies using transposon insertional mutagenesis.
+
+> - Create an interactive web tool to quickly refine the stated data set by a variety of parameters.
+> - Draw from universal resources to define homology relationships for candidate genes between animal models.
+> - Curate disease classification and meta-analysis through complete CIS listing and relative rank and strength scores.
+> - Offer easy access to external tools from filtered results for deeper biological context.
+
+<div class="notes">
+- relative rank was based either on the number of insertions in a given CIS or the P-value associated with the given CIS
+- The relative rank was calculated by ranking all CISs in a given study and then assigning grades
+- We assigned a letter grade of A for the top 10%, B for the top 11–25%, C for the top 26–50% and D for the bottom 50%.
+</div>
 
 --------------------------------------------------------------------------------
 
-## OIT setup
+## CCGD Implementation
+
+**ETL Process**
+
+scrape data &rarr; homology association &rarr; integrate into table
+
+![](./fig/search.png)
+
+<div class="container">
+
+<div class="col">
+#### Data Sources/Links
+- NCBI Gene
+- NCBI HomoloGene
+- NCBI PubMed
+- Sanger COSMIC
+- Sanger CGC
+- GeneCards
+</div>
+
+<div class="col">
+> - Filtered results are downloadable.
+> - Wrapped in a simple, instructional website built with classic LAMP stack.
+> - Hosted by UMN-OIT.
+</div>
+
+</div>
+
+<div class="notes">
+- Search Within - mouse human rat fly fish yeast
+</div>
+
 
 ################################################################################
 
-# Challenges {.center}
+# Issue {.center}
 
 --------------------------------------------------------------------------------
 
-## Forced Upgrades
+## Issue
+
+### Forced OS upgrade from UMN-OIT host
 
 --------------------------------------------------------------------------------
 
-## Technical Debt
-> - test
-> - test
+## Challenges
+
+#### Can this application be upgraded as-is?
+
+<div class="notes">
+- several of these items blend limitations that are dependency-based, while others amount to an inconvenience.
+</div>
+
+**Primary Challenges**
+
+> - Machine displacement in provisioning by UMN-OIT
+> - Use of abandonded, proprietary widgets
+> - Outsized SQL database
+
+**Secondary Challenges**
+
+> - Documentation missing visibility for admins
+> - Total app disk use
+> - Lack of version control
+> - Odd hosting paradigm from UMN-OIT
+> - Disorderly codebase, residual WYSIWYG effects
+> - Lack of modularity in back-end
+> - Pending web standards compliance issues
+
+<div class="notes">
+- these are a combination of both limitations and potential goals
+</div>
+
+--------------------------------------------------------------------------------
+
+## Challenges
+
+#### Can this application be upgraded as-is?
+
+**Primary Challenges**
+
+- <span style="color: #a3be8c;">**Machine displacement in provisioning by UMN-OIT**</span>
+- Use of abandonded, proprietary widgets
+- <span style="color: #a3be8c;">**Outsized SQL database**</span>
+
+**Secondary Challenges**
+
+- Documentation missing visibility for admins
+- Total app disk use
+- Lack of version control
+- Odd hosting paradigm from UMN-OIT
+- Disorderly codebase, residual WYSIWYG effects
+- Lack of modularity in back-end
+- Pending web standards compliance issues
+
+--------------------------------------------------------------------------------
+
+## Challenges
+
+### Ultimately, a drop-in transition was not possible.
+
 
 ################################################################################
 
@@ -76,7 +218,7 @@ knitr::opts_chunk$set(eval = F, echo = F, warning = F, message = F)
   1   server OS         upgrade server OS          RHEL7       Transition of architecture for public server host. This is required by University OIT due to end-of-life schedule for RHEL6.
   2   web front-end     rewrite web interface      Rmarkdown   Improvements to the web interface written in a modern, simplified language. This improved access to content creation and allowed for automation in front-end rendering.
   3   table build       rewrite table build        Rshiny      Rshiny offered a dramatic improvement to replace the existing process by merging the table build back-end with a modern web display of the app interface.
-  4   content update    improved admin controls    BASH/R      Old app version confined some content controls to app author, limiting ability to make contributions by product owner (Tim Starr).
+  4   content update    improved admin controls    BASH/R      Old app version confined some content controls to app author, limiting ability to make contributions by product owner.
   5   version control   implement best practices   git/docs    No version control was used in the original development of the app. This and other documentation practices were expanded in the rewrite.
   6   multiple          resource improvements      codebase    Due to the lack of some best practices, there were many opportunities to make impactful resource improvements.
 
@@ -93,9 +235,11 @@ knitr::opts_chunk$set(eval = F, echo = F, warning = F, message = F)
 
 ## Front-end Framework
 
-<div class="column">
+<div class="container">
 
+<div class="col">
 ```{r echo = T}
+---
 title: "Candidate Cancer Gene Database"
 bibliography: refs/ccgd_paper.bib
 nocite: '@*'
@@ -109,8 +253,11 @@ output:
 ---
 
 ```
+</div>
 
+<div class="col">
 ```{r echo = T}
+---
 name: "Candidate Cancer Gene Database"
 navbar:
     title: "CCGD"
@@ -125,8 +272,9 @@ navbar:
           href: references.html
         - text: "Contact"
           href: contact.html
-
+---
 ```
+</div>
 
 </div>
 
@@ -144,6 +292,10 @@ navbar:
 ![](./fig/reactive_graph.svg)
 
 #### table reactive graph {.center}
+
+<div class="notes">
+- ADD SOME NOTES
+</div>
 
 --------------------------------------------------------------------------------
 
@@ -166,6 +318,56 @@ navbar:
 --------------------------------------------------------------------------------
 
 ## Simplified Codebase
+
+<div class="notes">
+- codebase simplified in a few ways.
+- build table process was dramatically streamlined.
+</div>
+
+```{r echo = T}
+export <- homogTable %>%
+  full_join(df) %>%
+  group_by(MouseId) %>%
+  distinct(Study, .keep_all = T) %>%
+  add_count(name = "Studies") %>%
+  ungroup() %>%
+  mutate(CGC = HumanName %in% cgc) %>%
+  mutate(COSMIC = HumanName %in% cosmic)
+
+write.csv(export, file = "../table_app/ccgd_export.csv", row.names = F)
+
+deployApp(appDir = "../table_app", forceUpdate = T, launch.browser = F)
+```
+
+#### build_table.R table write and app deployment snippet
+
+--------------------------------------------------------------------------------
+
+## Simplified Codebase
+
+<div class="notes">
+- shiny snippet represents full set of code needed to render app ui. app is 200 lines total.
+- lines of code replacement is orders of magnitude. possible 1:100.
+- use of this script allowed for elimination of entire sql database.
+</div>
+
+```{r echo = T}
+export <- homogTable %>%
+  full_join(df) %>%
+  group_by(MouseId) %>%
+  distinct(Study, .keep_all = T) %>%
+  add_count(name = "Studies") %>%
+  ungroup() %>%
+  mutate(CGC = HumanName %in% cgc) %>%
+  mutate(COSMIC = HumanName %in% cosmic)
+
+write.csv(export, file = "../table_app/ccgd_export.csv", row.names = F)
+
+deployApp(appDir = "../table_app", forceUpdate = T, launch.browser = F)
+```
+
+#### build_table.R table write and app deployment snippet
+
 ```{r echo = T}
 df <- read.csv("ccgd_export.csv") # read in base source file
 speciesList <- c("Mouse", "Human", "Rat", "Fly", "Fish", "Yeast")
@@ -236,6 +438,10 @@ ui <- fluidPage( # build shiny app UI
 
 ## Simplified Codebase
 
+<div class="notes">
+- Page content is now written in a highly accessible syntax and rendered with a lean script.
+</div>
+
 ```{r echo = T}
 ---
 title: "Candidate Cancer Gene Database"
@@ -280,6 +486,69 @@ The most recent table build was completed on:
 ```
 
 #### index.html page content snippet {.center}
+
+--------------------------------------------------------------------------------
+
+## Simplified Codebase
+
+```{r echo = T}
+---
+title: "Candidate Cancer Gene Database"
+bibliography: refs/ccgd_paper.bib
+nocite: '@*'
+output:
+    html_document:
+        includes:
+            in_header: "styles/favicon.html"
+            after_body: "styles/footer.html"
+        css: styles/styles.css
+        theme: readable
+---
+
+The Candidate Cancer Gene Database (CCGD) was developed to make accessible a collated set of results from transposon-based forward cancer genetic screens in mice. The value in doing this is to give investigators the ability to quickly filter through the results of many such screens in an effort to determine the candidacy of a gene for its role in cancer.
+
+***
+
+### Background
+
+This work is a product of the [Starr Lab](http://www.med.umn.edu/starrlab/) at the [University of Minnesota](http://www.umn.edu/). The Starr Lab is affiliated with the [Center for Genome Engineering](http://www.cge.umn.edu/), the [Masonic Cancer Center](http://www.cancer.umn.edu/), the Department of [OB/GYN](http://www.obgyn.umn.edu/), and the Department of [Genetics, Cell Biology, and Development](http://www.cbs.umn.edu/gcd/).
+
+##### Contributions
+
+The idea for creating this database originated from Tim Starr, Vincent Keng, and David Largaespada at UMN. Erik Nyre and Ken Abbott developed the original database, with help from Juan Abrahante. A complete website and backend overhaul was conducted by Christopher Tastad in 2019.
+
+* Ken Abbott
+* [Erik Nyre](https://www.dorsey.com/people/n/nyre-erik)
+* [Juan Abrahante](https://research.umn.edu/units/umii/about-us/staff-directory/juan-e-abrahante-phd)
+* [Christopher Tastad](https://github.com/ctastad)
+
+***
+
+##### Updates
+
+The most recent table build was completed on:
+
+<object type="text/html"
+        height=40px
+        data="build_date.txt"></object>
+
+```
+
+#### index.html page content snippet {.center}
+
+```{r echo = T}
+setwd("..")
+
+# render core webpages
+rmarkdown::render("index.Rmd")
+rmarkdown::render("search.Rmd")
+rmarkdown::render("help.Rmd")
+rmarkdown::render("references.Rmd")
+rmarkdown::render("contact.Rmd")
+rmarkdown::render_site("index.Rmd")
+```
+
+#### knit_site.R page and site rendering script
 
 --------------------------------------------------------------------------------
 
@@ -354,9 +623,24 @@ done
 
 # Conclusions {.center}
 
+--------------------------------------------------------------------------------
+
 ## Conclusions
+- Stated requirements set out by this project have been met.
+- A new, more modern and simplified framework has been implemented across the full application stack.
+- All original functionality has been sustained.
+- Design and engineering considerations were given to ease future maintenance.
+
+## Future Directions
+- Continuous integration/continuous deployment
+- Anticipating future upgrades and framework evolution
+
+
+--------------------------------------------------------------------------------
 
 ## Acknowledgements
+
+--------------------------------------------------------------------------------
 
 ## The End {.center}
 
@@ -368,8 +652,12 @@ body {
   background: #2e3440;
 }
 
-.column {
-  column-count: 2;
+.container{
+    display: flex;
+}
+
+.col{
+    flex: 1;
 }
 
 div.sourceCode {
