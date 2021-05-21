@@ -545,20 +545,23 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <h2>Original Concept</h2>
 <p><img data-src="fig/ccgd_header.png" /></p>
 <ul>
-<li class="fragment">Cancer bio is complicated.</li>
-<li class="fragment">Driver genes present primary targets.</li>
+<li class="fragment">Cancer bio is complicated</li>
+<li class="fragment">Driver genes present primary targets</li>
 <li class="fragment">Screening methods…</li>
 </ul>
 <aside class="notes">
 <ul>
-<li><p>look at the origins and maintenance of the ccgd</p></li>
-<li><p>why does such a tool exist</p></li>
-<li><p>what purpose does it offer the field</p></li>
-<li><p>Cancer biology presents a highly complex genetic landscape.</p></li>
-<li><p>Cohorts of genes act as drivers for the progression of cancer.</p></li>
-<li><p>These genes present targets for study and development of therapeutics.</p></li>
-<li><p>Ultimately, we need to understand and simplify cancer gene targets.</p></li>
-<li><p>Screening methods offer quicker access to wide swaths of these targets.</p></li>
+<li>look at the origins and maintenance of the ccgd</li>
+<li>why does such a tool exist</li>
+<li>what purpose does it offer the field</li>
+</ul>
+<hr />
+<ul>
+<li>Cancer biology presents a highly complex genetic landscape.</li>
+<li>Cohorts of genes act as drivers for the progression of cancer.</li>
+<li>These genes present targets for study and development of therapeutics.</li>
+<li>Ultimately, we need to understand and simplify cancer gene targets.</li>
+<li>Screening methods offer quicker access to wide swaths of these targets.</li>
 </ul>
 </aside>
 </section>
@@ -595,12 +598,19 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <p>To facilitate analysis of driver genes to catalog all common insertion sites (CISs) and their corresponding genes identified in published studies using transposon insertional mutagenesis.</p>
 </blockquote>
 <ul>
-<li class="fragment">Create an interactive web tool to quickly refine the stated data set by a variety of parameters.</li>
-<li class="fragment">Draw from universal resources to define homology relationships for candidate genes between animal models.</li>
-<li class="fragment">Curate disease classification and meta-analysis through complete CIS listing and relative rank and strength scores.</li>
-<li class="fragment">Offer easy access to external tools from filtered results for deeper biological context.</li>
+<li class="fragment">Create a web tool</li>
+<li class="fragment">Form homology relationships</li>
+<li class="fragment">Curate disease classification</li>
+<li class="fragment">Offer connections to external tools</li>
 </ul>
 <aside class="notes">
+<ul>
+<li>Create an interactive web tool to quickly refine the stated data set by a variety of parameters.</li>
+<li>Draw from universal resources to define homology relationships for candidate genes between animal models.</li>
+<li>Curate disease classification and meta-analysis through complete CIS listing and relative rank and strength scores.</li>
+<li>Offer easy access to external tools from filtered results for deeper biological context.</li>
+</ul>
+<hr />
 <ul>
 <li>relative rank was based either on the number of insertions in a given CIS or the P-value associated with the given CIS</li>
 <li>The relative rank was calculated by ranking all CISs in a given study and then assigning grades</li>
@@ -627,9 +637,9 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </section>
 <div class="col">
 <ul>
-<li class="fragment">Filtered results are downloadable.</li>
-<li class="fragment">Wrapped in a simple, instructional website built with classic LAMP stack.</li>
-<li class="fragment">Hosted by UMN-OIT.</li>
+<li class="fragment">Filtered results are downloadable</li>
+<li class="fragment">Wrapped in a simple, instructional website built with classic LAMP stack</li>
+<li class="fragment">Hosted by UMN-OIT</li>
 </ul>
 </div>
 </div>
@@ -660,7 +670,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <p><strong>Primary Challenges</strong></p>
 <ul>
 <li class="fragment">Machine displacement in provisioning by UMN-OIT</li>
-<li class="fragment">Use of abandonded, proprietary widgets</li>
+<li class="fragment">Use of abandoned, proprietary widgets</li>
 <li class="fragment">Outsized SQL database</li>
 </ul>
 <p><strong>Secondary Challenges</strong></p>
@@ -685,7 +695,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <p><strong>Primary Challenges</strong></p>
 <ul>
 <li><span style="color: #a3be8c;"><strong>Machine displacement in provisioning by UMN-OIT</strong></span></li>
-<li>Use of abandonded, proprietary widgets</li>
+<li>Use of abandoned, proprietary widgets</li>
 <li><span style="color: #a3be8c;"><strong>Outsized SQL database</strong></span></li>
 </ul>
 <p><strong>Secondary Challenges</strong></p>
@@ -822,7 +832,12 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <h4 class="center" id="table-reactive-graph">table reactive graph</h4>
 <aside class="notes">
 <ul>
-<li>ADD SOME NOTES</li>
+<li>rshiny format is ui + server -&gt; deployment</li>
+<li>server is made up of reactive constructs of inputs, expressions, and outputs</li>
+<li>employs declarative programming style allowing for lazy code execution.</li>
+<li>define loose, high level controls to passively fill functional requirements</li>
+<li>improves flexibility for dev and machine - resource use reduce through modularity in code execution</li>
+<li>our app uses 2 state path</li>
 </ul>
 </aside>
 </section>
@@ -830,6 +845,11 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <h2>Back-end Framework</h2>
 <p><img data-src="fig/parse_flow.svg" /></p>
 <h4 class="center" id="server-side-processing-flow">server-side processing flow</h4>
+<aside class="notes">
+<ul>
+<li>typically, server side processing with a table of this side would be prohibitive</li>
+</ul>
+</aside>
 </section>
 <section id="back-end-framework-1" class="slide level2">
 <h2>Back-end Framework</h2>
@@ -848,209 +868,176 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <ul>
 <li>codebase simplified in a few ways.</li>
 <li>build table process was dramatically streamlined.</li>
-</ul>
-</aside>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>export <span class="ot">&lt;-</span> homogTable <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(df) <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(MouseId) <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(Study, <span class="at">.keep_all =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_count</span>(<span class="at">name =</span> <span class="st">&quot;Studies&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">CGC =</span> HumanName <span class="sc">%in%</span> cgc) <span class="sc">%&gt;%</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">COSMIC =</span> HumanName <span class="sc">%in%</span> cosmic)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(export, <span class="at">file =</span> <span class="st">&quot;../table_app/ccgd_export.csv&quot;</span>, <span class="at">row.names =</span> F)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">deployApp</span>(<span class="at">appDir =</span> <span class="st">&quot;../table_app&quot;</span>, <span class="at">forceUpdate =</span> T, <span class="at">launch.browser =</span> F)</span></code></pre></div>
-<h4 id="build_table.r-table-write-and-app-deployment-snippet">build_table.R table write and app deployment snippet</h4>
-</section>
-<section id="simplified-codebase-1" class="slide level2">
-<h2>Simplified Codebase</h2>
-<aside class="notes">
-<ul>
 <li>shiny snippet represents full set of code needed to render app ui. app is 200 lines total.</li>
-<li>lines of code replacement is orders of magnitude. possible 1:100.</li>
+<li>lines of code replacement is orders of magnitude. possibly 1:100.</li>
 <li>use of this script allowed for elimination of entire sql database.</li>
 </ul>
 </aside>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>export <span class="ot">&lt;-</span> homogTable <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(df) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(MouseId) <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(Study, <span class="at">.keep_all =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_count</span>(<span class="at">name =</span> <span class="st">&quot;Studies&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">CGC =</span> HumanName <span class="sc">%in%</span> cgc) <span class="sc">%&gt;%</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">COSMIC =</span> HumanName <span class="sc">%in%</span> cosmic)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(export, <span class="at">file =</span> <span class="st">&quot;../table_app/ccgd_export.csv&quot;</span>, <span class="at">row.names =</span> F)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">deployApp</span>(<span class="at">appDir =</span> <span class="st">&quot;../table_app&quot;</span>, <span class="at">forceUpdate =</span> T, <span class="at">launch.browser =</span> F)</span></code></pre></div>
-<h4 id="build_table.r-table-write-and-app-deployment-snippet-1">build_table.R table write and app deployment snippet</h4>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;ccgd_export.csv&quot;</span>) <span class="co"># read in base source file</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>speciesList <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Mouse&quot;</span>, <span class="st">&quot;Human&quot;</span>, <span class="st">&quot;Rat&quot;</span>, <span class="st">&quot;Fly&quot;</span>, <span class="st">&quot;Fish&quot;</span>, <span class="st">&quot;Yeast&quot;</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs are arranged in column, width orientation</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># each column variable set represents a single input and its params</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># next row of inputs layout</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>( <span class="co"># build shiny app UI</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fluidRow</span>(</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column</span>(</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span>,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">selectizeInput</span>(<span class="st">&quot;Species&quot;</span>,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="st">&quot;Species&quot;</span>,</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">choices =</span> speciesList</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column</span>(</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      <span class="dv">3</span>,</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">selectizeInput</span>(<span class="st">&quot;Study&quot;</span>,</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="st">&quot;Study&quot;</span>,</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">choices =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(df<span class="sc">$</span>Study)),</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">selected =</span> <span class="cn">NULL</span>,</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">multiple =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">options =</span> <span class="fu">list</span>(<span class="at">placeholder =</span> <span class="st">&quot;All studies&quot;</span>)</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column</span>(</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>      <span class="dv">3</span>,</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>      <span class="fu">selectizeInput</span>(<span class="st">&quot;Cancer&quot;</span>,</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="st">&quot;Cancer&quot;</span>,</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        <span class="at">choices =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(df<span class="sc">$</span>Cancer)),</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        <span class="at">selected =</span> <span class="cn">NULL</span>,</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>        <span class="at">multiple =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>        <span class="at">options =</span> <span class="fu">list</span>(<span class="at">placeholder =</span> <span class="st">&quot;All cancers&quot;</span>)</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column</span>(</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>      <span class="dv">4</span>,</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>      <span class="fu">textAreaInput</span>(<span class="st">&quot;Genes&quot;</span>,</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="st">&quot;Genes&quot;</span>,</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>        <span class="at">placeholder =</span> <span class="st">&quot;GeneA,GeneB,GeneC...&quot;</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fluidRow</span>(</span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column</span>(</span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span>,</span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>      <span class="co"># button for table export</span></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">downloadButton</span>(<span class="st">&quot;downloadData&quot;</span>,</span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="st">&quot;Download&quot;</span></span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hr</span>(),</span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dataTableOutput</span>(<span class="st">&quot;searchTable&quot;</span>)</span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;ccgd_export.csv&quot;</span>) <span class="co"># read in base source file</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>speciesList <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Mouse&quot;</span>, <span class="st">&quot;Human&quot;</span>, <span class="st">&quot;Rat&quot;</span>, <span class="st">&quot;Fly&quot;</span>, <span class="st">&quot;Fish&quot;</span>, <span class="st">&quot;Yeast&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs are arranged in column, width orientation</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># each column variable set represents a single input and its params</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># next row of inputs layout</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>( <span class="co"># build shiny app UI</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fluidRow</span>(</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column</span>(</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">selectizeInput</span>(<span class="st">&quot;Species&quot;</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="st">&quot;Species&quot;</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">choices =</span> speciesList</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column</span>(</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      <span class="dv">3</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">selectizeInput</span>(<span class="st">&quot;Study&quot;</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="st">&quot;Study&quot;</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">choices =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(df<span class="sc">$</span>Study)),</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">selected =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">multiple =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">options =</span> <span class="fu">list</span>(<span class="at">placeholder =</span> <span class="st">&quot;All studies&quot;</span>)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column</span>(</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>      <span class="dv">3</span>,</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>      <span class="fu">selectizeInput</span>(<span class="st">&quot;Cancer&quot;</span>,</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="st">&quot;Cancer&quot;</span>,</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>        <span class="at">choices =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(df<span class="sc">$</span>Cancer)),</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>        <span class="at">selected =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>        <span class="at">multiple =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        <span class="at">options =</span> <span class="fu">list</span>(<span class="at">placeholder =</span> <span class="st">&quot;All cancers&quot;</span>)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column</span>(</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>      <span class="dv">4</span>,</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>      <span class="fu">textAreaInput</span>(<span class="st">&quot;Genes&quot;</span>,</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="st">&quot;Genes&quot;</span>,</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>        <span class="at">placeholder =</span> <span class="st">&quot;GeneA,GeneB,GeneC...&quot;</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fluidRow</span>(</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column</span>(</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span>,</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>      <span class="co"># button for table export</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">downloadButton</span>(<span class="st">&quot;downloadData&quot;</span>,</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="st">&quot;Download&quot;</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hr</span>(),</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dataTableOutput</span>(<span class="st">&quot;searchTable&quot;</span>)</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <h4 class="center" id="app.r-rshiny-process-snippet">app.R Rshiny process snippet</h4>
 </section>
-<section id="simplified-codebase-2" class="slide level2">
+<section id="simplified-codebase-1" class="slide level2">
 <h2>Simplified Codebase</h2>
 <aside class="notes">
 <ul>
 <li>Page content is now written in a highly accessible syntax and rendered with a lean script.</li>
 </ul>
 </aside>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Candidate Cancer Gene Database&quot;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>bibliography<span class="sc">:</span> refs<span class="sc">/</span>ccgd_paper.bib</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>nocite<span class="sc">:</span> <span class="st">&#39;@*&#39;</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    html_document<span class="sc">:</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        includes<span class="sc">:</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            in_header<span class="sc">:</span> <span class="st">&quot;styles/favicon.html&quot;</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>            after_body<span class="sc">:</span> <span class="st">&quot;styles/footer.html&quot;</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        css<span class="sc">:</span> styles<span class="sc">/</span>styles.css</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        theme<span class="sc">:</span> readable</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>The Candidate Cancer Gene <span class="fu">Database</span> (CCGD) was developed to make accessible a collated set of results from transposon<span class="sc">-</span>based forward cancer genetic screens <span class="cf">in</span> mice. The value <span class="cf">in</span> doing this is to give investigators the ability to quickly filter through the results of many such screens <span class="cf">in</span> an effort to determine the candidacy of a gene <span class="cf">for</span> its role <span class="cf">in</span> cancer.</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span><span class="er">*</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="do">### Background</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>This work is a product of the [Starr Lab](http<span class="sc">:</span><span class="er">//</span>www.med.umn.edu<span class="sc">/</span>starrlab<span class="sc">/</span>) at the [University of Minnesota](http<span class="sc">:</span><span class="er">//</span>www.umn.edu<span class="sc">/</span>). The Starr Lab is affiliated with the [Center <span class="cf">for</span> Genome Engineering](http<span class="sc">:</span><span class="er">//</span>www.cge.umn.edu<span class="sc">/</span>), the [Masonic Cancer Center](http<span class="sc">:</span><span class="er">//</span>www.cancer.umn.edu<span class="sc">/</span>), the Department of [OB<span class="sc">/</span>GYN](http<span class="sc">:</span><span class="er">//</span>www.obgyn.umn.edu<span class="sc">/</span>), and the Department of [Genetics, Cell Biology, and Development](http<span class="sc">:</span><span class="er">//</span>www.cbs.umn.edu<span class="sc">/</span>gcd<span class="sc">/</span>).</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="do">##### Contributions</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>The idea <span class="cf">for</span> creating this database originated from Tim Starr, Vincent Keng, and David Largaespada at UMN. Erik Nyre and Ken Abbott developed the original database, with help from Juan Abrahante. A complete website and backend overhaul was conducted by Christopher Tastad <span class="cf">in</span> <span class="fl">2019.</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Ken Abbott</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> [Erik Nyre](https<span class="sc">:</span><span class="er">//</span>www.dorsey.com<span class="sc">/</span>people<span class="sc">/</span>n<span class="sc">/</span>nyre<span class="sc">-</span>erik)</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> [Juan Abrahante](https<span class="sc">:</span><span class="er">//</span>research.umn.edu<span class="sc">/</span>units<span class="sc">/</span>umii<span class="sc">/</span>about<span class="sc">-</span>us<span class="sc">/</span>staff<span class="sc">-</span>directory<span class="sc">/</span>juan<span class="sc">-</span>e<span class="sc">-</span>abrahante<span class="sc">-</span>phd)</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> [Christopher Tastad](https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>ctastad)</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span><span class="er">*</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="do">##### Updates</span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>The most recent table build was completed on<span class="sc">:</span></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>object type<span class="ot">=</span><span class="st">&quot;text/html&quot;</span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>        height<span class="ot">=</span>40px</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>        data<span class="ot">=</span><span class="st">&quot;build_date.txt&quot;</span><span class="sc">&gt;</span><span class="er">&lt;/</span>object<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Candidate Cancer Gene Database&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>bibliography<span class="sc">:</span> refs<span class="sc">/</span>ccgd_paper.bib</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>nocite<span class="sc">:</span> <span class="st">&#39;@*&#39;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    html_document<span class="sc">:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        includes<span class="sc">:</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            in_header<span class="sc">:</span> <span class="st">&quot;styles/favicon.html&quot;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            after_body<span class="sc">:</span> <span class="st">&quot;styles/footer.html&quot;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        css<span class="sc">:</span> styles<span class="sc">/</span>styles.css</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        theme<span class="sc">:</span> readable</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>The Candidate Cancer Gene <span class="fu">Database</span> (CCGD) was developed to make accessible a collated set of results from transposon<span class="sc">-</span>based forward cancer genetic screens <span class="cf">in</span> mice. The value <span class="cf">in</span> doing this is to give investigators the ability to quickly filter through the results of many such screens <span class="cf">in</span> an effort to determine the candidacy of a gene <span class="cf">for</span> its role <span class="cf">in</span> cancer.</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span><span class="er">*</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="do">### Background</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>This work is a product of the [Starr Lab](http<span class="sc">:</span><span class="er">//</span>www.med.umn.edu<span class="sc">/</span>starrlab<span class="sc">/</span>) at the [University of Minnesota](http<span class="sc">:</span><span class="er">//</span>www.umn.edu<span class="sc">/</span>). The Starr Lab is affiliated with the [Center <span class="cf">for</span> Genome Engineering](http<span class="sc">:</span><span class="er">//</span>www.cge.umn.edu<span class="sc">/</span>), the [Masonic Cancer Center](http<span class="sc">:</span><span class="er">//</span>www.cancer.umn.edu<span class="sc">/</span>), the Department of [OB<span class="sc">/</span>GYN](http<span class="sc">:</span><span class="er">//</span>www.obgyn.umn.edu<span class="sc">/</span>), and the Department of [Genetics, Cell Biology, and Development](http<span class="sc">:</span><span class="er">//</span>www.cbs.umn.edu<span class="sc">/</span>gcd<span class="sc">/</span>).</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="do">##### Contributions</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>The idea <span class="cf">for</span> creating this database originated from Tim Starr, Vincent Keng, and David Largaespada at UMN. Erik Nyre and Ken Abbott developed the original database, with help from Juan Abrahante. A complete website and backend overhaul was conducted by Christopher Tastad <span class="cf">in</span> <span class="fl">2019.</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Ken Abbott</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> [Erik Nyre](https<span class="sc">:</span><span class="er">//</span>www.dorsey.com<span class="sc">/</span>people<span class="sc">/</span>n<span class="sc">/</span>nyre<span class="sc">-</span>erik)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> [Juan Abrahante](https<span class="sc">:</span><span class="er">//</span>research.umn.edu<span class="sc">/</span>units<span class="sc">/</span>umii<span class="sc">/</span>about<span class="sc">-</span>us<span class="sc">/</span>staff<span class="sc">-</span>directory<span class="sc">/</span>juan<span class="sc">-</span>e<span class="sc">-</span>abrahante<span class="sc">-</span>phd)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> [Christopher Tastad](https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>ctastad)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span><span class="er">*</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="do">##### Updates</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>The most recent table build was completed on<span class="sc">:</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>object type<span class="ot">=</span><span class="st">&quot;text/html&quot;</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>        height<span class="ot">=</span>40px</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        data<span class="ot">=</span><span class="st">&quot;build_date.txt&quot;</span><span class="sc">&gt;</span><span class="er">&lt;/</span>object<span class="sc">&gt;</span></span></code></pre></div>
 <h4 class="center" id="index.html-page-content-snippet">index.html page content snippet</h4>
 </section>
-<section id="simplified-codebase-3" class="slide level2">
+<section id="simplified-codebase-2" class="slide level2">
 <h2>Simplified Codebase</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Candidate Cancer Gene Database&quot;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>bibliography<span class="sc">:</span> refs<span class="sc">/</span>ccgd_paper.bib</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>nocite<span class="sc">:</span> <span class="st">&#39;@*&#39;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    html_document<span class="sc">:</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        includes<span class="sc">:</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>            in_header<span class="sc">:</span> <span class="st">&quot;styles/favicon.html&quot;</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            after_body<span class="sc">:</span> <span class="st">&quot;styles/footer.html&quot;</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        css<span class="sc">:</span> styles<span class="sc">/</span>styles.css</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        theme<span class="sc">:</span> readable</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>The Candidate Cancer Gene <span class="fu">Database</span> (CCGD) was developed to make accessible a collated set of results from transposon<span class="sc">-</span>based forward cancer genetic screens <span class="cf">in</span> mice. The value <span class="cf">in</span> doing this is to give investigators the ability to quickly filter through the results of many such screens <span class="cf">in</span> an effort to determine the candidacy of a gene <span class="cf">for</span> its role <span class="cf">in</span> cancer.</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span><span class="er">*</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="do">### Background</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>This work is a product of the [Starr Lab](http<span class="sc">:</span><span class="er">//</span>www.med.umn.edu<span class="sc">/</span>starrlab<span class="sc">/</span>) at the [University of Minnesota](http<span class="sc">:</span><span class="er">//</span>www.umn.edu<span class="sc">/</span>). The Starr Lab is affiliated with the [Center <span class="cf">for</span> Genome Engineering](http<span class="sc">:</span><span class="er">//</span>www.cge.umn.edu<span class="sc">/</span>), the [Masonic Cancer Center](http<span class="sc">:</span><span class="er">//</span>www.cancer.umn.edu<span class="sc">/</span>), the Department of [OB<span class="sc">/</span>GYN](http<span class="sc">:</span><span class="er">//</span>www.obgyn.umn.edu<span class="sc">/</span>), and the Department of [Genetics, Cell Biology, and Development](http<span class="sc">:</span><span class="er">//</span>www.cbs.umn.edu<span class="sc">/</span>gcd<span class="sc">/</span>).</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="do">##### Contributions</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>The idea <span class="cf">for</span> creating this database originated from Tim Starr, Vincent Keng, and David Largaespada at UMN. Erik Nyre and Ken Abbott developed the original database, with help from Juan Abrahante. A complete website and backend overhaul was conducted by Christopher Tastad <span class="cf">in</span> <span class="fl">2019.</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Ken Abbott</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> [Erik Nyre](https<span class="sc">:</span><span class="er">//</span>www.dorsey.com<span class="sc">/</span>people<span class="sc">/</span>n<span class="sc">/</span>nyre<span class="sc">-</span>erik)</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> [Juan Abrahante](https<span class="sc">:</span><span class="er">//</span>research.umn.edu<span class="sc">/</span>units<span class="sc">/</span>umii<span class="sc">/</span>about<span class="sc">-</span>us<span class="sc">/</span>staff<span class="sc">-</span>directory<span class="sc">/</span>juan<span class="sc">-</span>e<span class="sc">-</span>abrahante<span class="sc">-</span>phd)</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> [Christopher Tastad](https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>ctastad)</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span><span class="er">*</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="do">##### Updates</span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>The most recent table build was completed on<span class="sc">:</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>object type<span class="ot">=</span><span class="st">&quot;text/html&quot;</span></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>        height<span class="ot">=</span>40px</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>        data<span class="ot">=</span><span class="st">&quot;build_date.txt&quot;</span><span class="sc">&gt;</span><span class="er">&lt;/</span>object<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Candidate Cancer Gene Database&quot;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>bibliography<span class="sc">:</span> refs<span class="sc">/</span>ccgd_paper.bib</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>nocite<span class="sc">:</span> <span class="st">&#39;@*&#39;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    html_document<span class="sc">:</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        includes<span class="sc">:</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            in_header<span class="sc">:</span> <span class="st">&quot;styles/favicon.html&quot;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            after_body<span class="sc">:</span> <span class="st">&quot;styles/footer.html&quot;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        css<span class="sc">:</span> styles<span class="sc">/</span>styles.css</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        theme<span class="sc">:</span> readable</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>The Candidate Cancer Gene <span class="fu">Database</span> (CCGD) was developed to make accessible a collated set of results from transposon<span class="sc">-</span>based forward cancer genetic screens <span class="cf">in</span> mice. The value <span class="cf">in</span> doing this is to give investigators the ability to quickly filter through the results of many such screens <span class="cf">in</span> an effort to determine the candidacy of a gene <span class="cf">for</span> its role <span class="cf">in</span> cancer.</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span><span class="er">*</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="do">### Background</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>This work is a product of the [Starr Lab](http<span class="sc">:</span><span class="er">//</span>www.med.umn.edu<span class="sc">/</span>starrlab<span class="sc">/</span>) at the [University of Minnesota](http<span class="sc">:</span><span class="er">//</span>www.umn.edu<span class="sc">/</span>). The Starr Lab is affiliated with the [Center <span class="cf">for</span> Genome Engineering](http<span class="sc">:</span><span class="er">//</span>www.cge.umn.edu<span class="sc">/</span>), the [Masonic Cancer Center](http<span class="sc">:</span><span class="er">//</span>www.cancer.umn.edu<span class="sc">/</span>), the Department of [OB<span class="sc">/</span>GYN](http<span class="sc">:</span><span class="er">//</span>www.obgyn.umn.edu<span class="sc">/</span>), and the Department of [Genetics, Cell Biology, and Development](http<span class="sc">:</span><span class="er">//</span>www.cbs.umn.edu<span class="sc">/</span>gcd<span class="sc">/</span>).</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="do">##### Contributions</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>The idea <span class="cf">for</span> creating this database originated from Tim Starr, Vincent Keng, and David Largaespada at UMN. Erik Nyre and Ken Abbott developed the original database, with help from Juan Abrahante. A complete website and backend overhaul was conducted by Christopher Tastad <span class="cf">in</span> <span class="fl">2019.</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Ken Abbott</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> [Erik Nyre](https<span class="sc">:</span><span class="er">//</span>www.dorsey.com<span class="sc">/</span>people<span class="sc">/</span>n<span class="sc">/</span>nyre<span class="sc">-</span>erik)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> [Juan Abrahante](https<span class="sc">:</span><span class="er">//</span>research.umn.edu<span class="sc">/</span>units<span class="sc">/</span>umii<span class="sc">/</span>about<span class="sc">-</span>us<span class="sc">/</span>staff<span class="sc">-</span>directory<span class="sc">/</span>juan<span class="sc">-</span>e<span class="sc">-</span>abrahante<span class="sc">-</span>phd)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> [Christopher Tastad](https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>ctastad)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span><span class="er">*</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="do">##### Updates</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>The most recent table build was completed on<span class="sc">:</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>object type<span class="ot">=</span><span class="st">&quot;text/html&quot;</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>        height<span class="ot">=</span>40px</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>        data<span class="ot">=</span><span class="st">&quot;build_date.txt&quot;</span><span class="sc">&gt;</span><span class="er">&lt;/</span>object<span class="sc">&gt;</span></span></code></pre></div>
 <h4 class="center" id="index.html-page-content-snippet-1">index.html page content snippet</h4>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;..&quot;</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># render core webpages</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;index.Rmd&quot;</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;search.Rmd&quot;</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;help.Rmd&quot;</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;references.Rmd&quot;</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;contact.Rmd&quot;</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render_site</span>(<span class="st">&quot;index.Rmd&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;..&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># render core webpages</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;index.Rmd&quot;</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;search.Rmd&quot;</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;help.Rmd&quot;</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;references.Rmd&quot;</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;contact.Rmd&quot;</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render_site</span>(<span class="st">&quot;index.Rmd&quot;</span>)</span></code></pre></div>
 <h4 id="knit_site.r-page-and-site-rendering-script">knit_site.R page and site rendering script</h4>
 </section>
-<section id="simplified-codebase-4" class="slide level2">
+<section id="simplified-codebase-3" class="slide level2">
 <h2>Simplified Codebase</h2>
 <p><img data-src="fig/file_tree.svg" /></p>
 <h4 class="center" id="project-directory-file-tree-comparison">Project Directory File Tree Comparison</h4>
@@ -1067,22 +1054,22 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </section>
 <section id="improved-admin-controls" class="slide level2">
 <h2>Improved Admin Controls</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Executed:   locally from the CCGD project dir</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   Options:    -b build (TRUE,FALSE) -s full proj dir sync (TRUE,FALSE)</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#               -t table upload file -r reference upload file</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#               -k (TURE,FALSE) render site files</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># pass arguments from cli</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> getopts b<span class="sc">:</span>t<span class="sc">:</span>r<span class="sc">:</span>s<span class="sc">:</span> option</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>do</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    case <span class="st">&quot;${option}&quot;</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">in</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        b<span class="er">)</span> build<span class="ot">=</span><span class="er">$</span>{OPTARG};;</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        t<span class="er">)</span> table<span class="ot">=</span><span class="er">$</span>{OPTARG};;</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        r<span class="er">)</span> refs<span class="ot">=</span><span class="er">$</span>{OPTARG};;</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        s<span class="er">)</span> sync<span class="ot">=</span><span class="er">$</span>{OPTARG};;</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    esac</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>done</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Executed:   locally from the CCGD project dir</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   Options:    -b build (TRUE,FALSE) -s full proj dir sync (TRUE,FALSE)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#               -t table upload file -r reference upload file</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#               -k (TURE,FALSE) render site files</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># pass arguments from cli</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> getopts b<span class="sc">:</span>t<span class="sc">:</span>r<span class="sc">:</span>s<span class="sc">:</span> option</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>do</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    case <span class="st">&quot;${option}&quot;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">in</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        b<span class="er">)</span> build<span class="ot">=</span><span class="er">$</span>{OPTARG};;</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        t<span class="er">)</span> table<span class="ot">=</span><span class="er">$</span>{OPTARG};;</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        r<span class="er">)</span> refs<span class="ot">=</span><span class="er">$</span>{OPTARG};;</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        s<span class="er">)</span> sync<span class="ot">=</span><span class="er">$</span>{OPTARG};;</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    esac</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>done</span></code></pre></div>
 <h4 class="center" id="ccgd_upload.sh-script-snippet">ccgd_upload.sh script snippet</h4>
 </section>
 <section id="sustainable-development" class="slide level2">
@@ -1109,24 +1096,40 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section id="conclusions-1" class="slide level2">
 <h2>Conclusions</h2>
 <ul>
-<li>Stated requirements set out by this project have been met.</li>
-<li>A new, more modern and simplified framework has been implemented across the full application stack.</li>
-<li>All original functionality has been sustained.</li>
-<li>Design and engineering considerations were given to ease future maintenance.</li>
+<li class="fragment">Stated requirements set out by this project have been met.</li>
+<li class="fragment">A new, more modern and simplified framework has been implemented across the full application stack.</li>
+<li class="fragment">All original functionality has been sustained.</li>
+<li class="fragment">Design and engineering considerations were given to ease future maintenance.</li>
 </ul>
 </section>
 <section id="future-directions" class="slide level2">
 <h2>Future Directions</h2>
 <ul>
-<li>Continuous integration/continuous deployment</li>
-<li>Anticipating future upgrades and framework evolution</li>
+<li class="fragment">Continuous integration/continuous deployment</li>
+<li class="fragment">Anticipating future upgrades and framework evolution</li>
 </ul>
 </section>
 <section id="acknowledgements" class="slide level2">
 <h2>Acknowledgements</h2>
+<ul>
+<li>Tim Starr*</li>
+<li>Yuk Sham*</li>
+<li>Jinhua Wang</li>
+<li>National Marrow Donor Program</li>
+<li>UMN-OIT</li>
+<li>Cassandra Price</li>
+<li>My wife and parents</li>
+</ul>
 </section>
 <section id="the-end" class="slide level2 center">
 <h2 class="center">The End</h2>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section id="supplemental" class="title-slide slide level1">
+<h1>Supplemental</h1>
+<p><a href="http://hst-ccgd-prd-web.oit.umn.edu/search.html" class="uri">http://hst-ccgd-prd-web.oit.umn.edu/search.html</a></p>
 <!-- style -->
 <style>
 
@@ -1186,7 +1189,7 @@ div.sourceCode {
 
 
 ## Figure Slide
-<img src="presentation_files/figure-revealjs/unnamed-chunk-10-1.png" width="768" />
+<img src="presentation_files/figure-revealjs/unnamed-chunk-8-1.png" width="768" />
 
 
 ## Code Slide
@@ -1200,7 +1203,7 @@ if x == 1:
 ```
 
 -->
-</section></section>
+</section>
     </div>
   </div>
 

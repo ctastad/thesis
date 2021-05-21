@@ -36,14 +36,16 @@ knitr::opts_chunk$set(eval = F, echo = F, warning = F, message = F)
 
 ![](./fig/ccgd_header.png)
 
-> - Cancer bio is complicated.
-> - Driver genes present primary targets.
+> - Cancer bio is complicated
+> - Driver genes present primary targets
 > - Screening methods...
 
 <div class="notes">
 - look at the origins and maintenance of the ccgd
 - why does such a tool exist
 - what purpose does it offer the field
+
+---
 
 - Cancer biology presents a highly complex genetic landscape.
 - Cohorts of genes act as drivers for the progression of cancer.
@@ -89,12 +91,19 @@ knitr::opts_chunk$set(eval = F, echo = F, warning = F, message = F)
 
 > To facilitate analysis of driver genes to catalog all common insertion sites (CISs) and their corresponding genes identified in published studies using transposon insertional mutagenesis.
 
-> - Create an interactive web tool to quickly refine the stated data set by a variety of parameters.
-> - Draw from universal resources to define homology relationships for candidate genes between animal models.
-> - Curate disease classification and meta-analysis through complete CIS listing and relative rank and strength scores.
-> - Offer easy access to external tools from filtered results for deeper biological context.
+> - Create a web tool
+> - Form homology relationships
+> - Curate disease classification
+> - Offer connections to external tools
 
 <div class="notes">
+- Create an interactive web tool to quickly refine the stated data set by a variety of parameters.
+- Draw from universal resources to define homology relationships for candidate genes between animal models.
+- Curate disease classification and meta-analysis through complete CIS listing and relative rank and strength scores.
+- Offer easy access to external tools from filtered results for deeper biological context.
+
+---
+
 - relative rank was based either on the number of insertions in a given CIS or the P-value associated with the given CIS
 - The relative rank was calculated by ranking all CISs in a given study and then assigning grades
 - We assigned a letter grade of A for the top 10%, B for the top 11–25%, C for the top 26–50% and D for the bottom 50%.
@@ -123,9 +132,9 @@ scrape data &rarr; homology association &rarr; integrate into table
 </div>
 
 <div class="col">
-> - Filtered results are downloadable.
-> - Wrapped in a simple, instructional website built with classic LAMP stack.
-> - Hosted by UMN-OIT.
+> - Filtered results are downloadable
+> - Wrapped in a simple, instructional website built with classic LAMP stack
+> - Hosted by UMN-OIT
 </div>
 
 </div>
@@ -158,7 +167,7 @@ scrape data &rarr; homology association &rarr; integrate into table
 **Primary Challenges**
 
 > - Machine displacement in provisioning by UMN-OIT
-> - Use of abandonded, proprietary widgets
+> - Use of abandoned, proprietary widgets
 > - Outsized SQL database
 
 **Secondary Challenges**
@@ -184,7 +193,7 @@ scrape data &rarr; homology association &rarr; integrate into table
 **Primary Challenges**
 
 - <span style="color: #a3be8c;">**Machine displacement in provisioning by UMN-OIT**</span>
-- Use of abandonded, proprietary widgets
+- Use of abandoned, proprietary widgets
 - <span style="color: #a3be8c;">**Outsized SQL database**</span>
 
 **Secondary Challenges**
@@ -294,7 +303,12 @@ navbar:
 #### table reactive graph {.center}
 
 <div class="notes">
-- ADD SOME NOTES
+- rshiny format is ui + server -> deployment
+- server is made up of reactive constructs of inputs, expressions, and outputs
+- employs declarative programming style allowing for lazy code execution.
+- define loose, high level controls to passively fill functional requirements
+- improves flexibility for dev and machine - resource use reduce through modularity in code execution
+- our app uses 2 state path
 </div>
 
 --------------------------------------------------------------------------------
@@ -303,6 +317,10 @@ navbar:
 ![](./fig/parse_flow.svg)
 
 #### server-side processing flow {.center}
+
+<div class="notes">
+- typically, server side processing with a table of this side would be prohibitive
+</div>
 
 --------------------------------------------------------------------------------
 
@@ -322,51 +340,10 @@ navbar:
 <div class="notes">
 - codebase simplified in a few ways.
 - build table process was dramatically streamlined.
-</div>
-
-```{r echo = T}
-export <- homogTable %>%
-  full_join(df) %>%
-  group_by(MouseId) %>%
-  distinct(Study, .keep_all = T) %>%
-  add_count(name = "Studies") %>%
-  ungroup() %>%
-  mutate(CGC = HumanName %in% cgc) %>%
-  mutate(COSMIC = HumanName %in% cosmic)
-
-write.csv(export, file = "../table_app/ccgd_export.csv", row.names = F)
-
-deployApp(appDir = "../table_app", forceUpdate = T, launch.browser = F)
-```
-
-#### build_table.R table write and app deployment snippet
-
---------------------------------------------------------------------------------
-
-## Simplified Codebase
-
-<div class="notes">
 - shiny snippet represents full set of code needed to render app ui. app is 200 lines total.
-- lines of code replacement is orders of magnitude. possible 1:100.
+- lines of code replacement is orders of magnitude. possibly 1:100.
 - use of this script allowed for elimination of entire sql database.
 </div>
-
-```{r echo = T}
-export <- homogTable %>%
-  full_join(df) %>%
-  group_by(MouseId) %>%
-  distinct(Study, .keep_all = T) %>%
-  add_count(name = "Studies") %>%
-  ungroup() %>%
-  mutate(CGC = HumanName %in% cgc) %>%
-  mutate(COSMIC = HumanName %in% cosmic)
-
-write.csv(export, file = "../table_app/ccgd_export.csv", row.names = F)
-
-deployApp(appDir = "../table_app", forceUpdate = T, launch.browser = F)
-```
-
-#### build_table.R table write and app deployment snippet
 
 ```{r echo = T}
 df <- read.csv("ccgd_export.csv") # read in base source file
@@ -626,23 +603,38 @@ done
 --------------------------------------------------------------------------------
 
 ## Conclusions
-- Stated requirements set out by this project have been met.
-- A new, more modern and simplified framework has been implemented across the full application stack.
-- All original functionality has been sustained.
-- Design and engineering considerations were given to ease future maintenance.
+> - Stated requirements set out by this project have been met.
+> - A new, more modern and simplified framework has been implemented across the full application stack.
+> - All original functionality has been sustained.
+> - Design and engineering considerations were given to ease future maintenance.
+
+--------------------------------------------------------------------------------
 
 ## Future Directions
-- Continuous integration/continuous deployment
-- Anticipating future upgrades and framework evolution
-
+> - Continuous integration/continuous deployment
+> - Anticipating future upgrades and framework evolution
 
 --------------------------------------------------------------------------------
 
 ## Acknowledgements
 
+- Tim Starr*
+- Yuk Sham*
+- Jinhua Wang
+- National Marrow Donor Program
+- UMN-OIT
+- Cassandra Price
+- My wife and parents
+
 --------------------------------------------------------------------------------
 
 ## The End {.center}
+
+--------------------------------------------------------------------------------
+
+# Supplemental
+
+http://hst-ccgd-prd-web.oit.umn.edu/search.html
 
 <!-- style -->
 
